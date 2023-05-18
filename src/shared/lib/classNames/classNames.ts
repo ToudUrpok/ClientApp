@@ -1,10 +1,10 @@
 
 type Attributes = Record<string, string | boolean>
 
-function classNames(elemCls: string, attributes: Attributes, extra: string[]): string {
+function classNames(elemCls: string, attributes: Attributes = {}, extra: string[] = []): string {
     return [
         elemCls,
-        ...extra,
+        ...extra.filter(Boolean),
         ...Object.keys(attributes).filter((attr) => !!attributes[attr])
     ].join(' ');
 }
