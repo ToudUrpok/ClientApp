@@ -1,4 +1,9 @@
-import { ProgressPlugin, WebpackPluginInstance, DefinePlugin} from "webpack";
+import { 
+    ProgressPlugin, 
+    WebpackPluginInstance, 
+    DefinePlugin, 
+    HotModuleReplacementPlugin 
+} from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
 import { BuildOptions } from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
@@ -16,5 +21,6 @@ export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
         new DefinePlugin({
             __IS_DEV__: isDev,
         }),
+        new HotModuleReplacementPlugin()
     ]
 }
