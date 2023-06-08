@@ -1,7 +1,9 @@
 {
-    "LangKey": "EN",
-    "Loading": "Loading",
-    "Home": "Home",
-    "About": "About",
-    "HomePageContent": "Welcome to Home Page!"
+  "LangKey": "EN",
+  "Loading": "Loading",
+  "Home": "Home",
+  "About": "About",
+  "HomePageContent": "Welcome to Home Page!",
+  "NotFoundPage": "Page not found",
+  "Toggle": "Toggle"
 }
