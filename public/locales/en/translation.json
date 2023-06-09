@@ -5,5 +5,8 @@
   "About": "About",
   "HomePageContent": "Welcome to Home Page!",
   "NotFoundPage": "Page not found",
-  "Toggle": "Toggle"
+  "Toggle": "Toggle",
+  "UnexpectedError": "An unexpected error has occurred",
+  "ReloadPage": "Reload page",
+  "Throw error": "Throw error"
 }
