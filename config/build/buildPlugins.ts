@@ -8,6 +8,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 import { BuildOptions } from './types/config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 export function buildPlugins ({ paths, isDev }: BuildOptions): WebpackPluginInstance[] {
     const plugins = [
@@ -21,6 +22,9 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): WebpackPluginInst
         }),
         new DefinePlugin({
             __IS_DEV__: isDev
+        }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false
         })
     ]
 
