@@ -22,9 +22,6 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): WebpackPluginInst
         }),
         new DefinePlugin({
             __IS_DEV__: isDev
-        }),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false
         })
     ]
 
@@ -32,6 +29,9 @@ export function buildPlugins ({ paths, isDev }: BuildOptions): WebpackPluginInst
         plugins.push(new HotModuleReplacementPlugin())
         plugins.push(new ReactRefreshWebpackPlugin({
             overlay: false
+        }))
+        plugins.push(new BundleAnalyzerPlugin({
+            openAnalyzer: false
         }))
     }
 
