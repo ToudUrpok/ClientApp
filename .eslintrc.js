@@ -57,6 +57,7 @@ module.exports = {
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreAttribute: ['to', 'data-testid']
-        }]
+        }],
+        'react/display-name': 'off'
     }
 }
