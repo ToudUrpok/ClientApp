@@ -21,6 +21,7 @@
     },
     "include": [
         "./config/jest",
+        "./config/storybook",
         "webpack.config.ts",
         "src"
     ]
