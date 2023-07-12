@@ -4,10 +4,7 @@
     background: var(--bg-color-inverted);
     position: relative;
     transition: width 0.3s;
-}
-
-.collapsed {
-    width: var(--sidebar-collapsed-width);
+    align-items: center;
 }
 
 .Switchers {
@@ -17,4 +14,44 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+}
+
+.sidebarCollapse {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+.LinkItemsList {
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.LinkItem {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.LinkItemLink {
+    opacity: 1;
+}
+
+.LinkItemIcon {
+    margin-right: 10px;
+    fill: var(--contrast-color);
+}
+
+.collapsed {
+    width: var(--sidebar-collapsed-width);
+
+    .LinkItemLink {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
 }
