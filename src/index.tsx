@@ -5,14 +5,17 @@ import { render } from 'react-dom'
 import { ThemeProvider } from 'app/providers/ThemeProvider'
 import './shared/config/i18n/i18n'
 import { ErrorBoundary } from 'app/providers/ErrorBoundary'
+import { StoreProvider } from 'app/providers/StoreProvider'
 
 render(
-    <BrowserRouter>
-        <ErrorBoundary>
-            <ThemeProvider>
-                <App/>
-            </ThemeProvider>
-        </ErrorBoundary>
-    </BrowserRouter>,
+    <ErrorBoundary>
+        <StoreProvider>
+            <BrowserRouter>
+                <ThemeProvider>
+                    <App/>
+                </ThemeProvider>
+            </BrowserRouter>
+        </StoreProvider>
+    </ErrorBoundary>,
     document.getElementById('root')
 )
