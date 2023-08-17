@@ -10,5 +10,7 @@
   "ReloadPage": "Перезагрузить страницу",
   "Throw error": "Пробросить ошибку",
   "Log In": "Войти",
-  "ModalTestContent": "Модальное окно с тестовым сообщением ..."
+  "ModalTestContent": "Модальное окно с тестовым сообщением ...",
+  "EmailInputPlaceholder": "youremail@gmail.com",
+  "Password": "пароль"
 }

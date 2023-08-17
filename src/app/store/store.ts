@@ -3,10 +3,12 @@ import {
     combineReducers,
     configureStore
 } from '@reduxjs/toolkit'
-import { counterReducer } from 'features/Counter'
+import { counterReducer } from 'entities/Counter'
+import { userReducer } from 'entities/User'
 
 const rootReducer = combineReducers({
-    counter: counterReducer
+    counter: counterReducer,
+    user: userReducer
 })
 
 export function setupStore (preloadedState?: PreloadedState<RootState>) {

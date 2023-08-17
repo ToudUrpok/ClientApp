@@ -10,5 +10,7 @@
   "ReloadPage": "Reload page",
   "Throw error": "Throw error",
   "Log In": "Log In",
-  "ModalTestContent": "Modal Test Message. Demo Modal with some text ..."
+  "ModalTestContent": "Modal Test Message. Demo Modal with some text ...",
+  "EmailInputPlaceholder": "youremail@gmail.com",
+  "Password": "password"
 }
