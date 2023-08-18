@@ -12,5 +12,8 @@
   "Log In": "Log In",
   "ModalTestContent": "Modal Test Message. Demo Modal with some text ...",
   "EmailInputPlaceholder": "youremail@gmail.com",
-  "Password": "password"
+  "Password": "password",
+  "LoginError": "Login Error",
+  "Login": "Login",
+  "LogOut": "Log Out"
 }

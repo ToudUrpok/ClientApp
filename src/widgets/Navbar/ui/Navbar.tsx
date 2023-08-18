@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
+import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
+import { selectUserAuthData, userActions } from 'entities/User'
 
 interface NavbarProps {
     className?: string
@@ -12,6 +14,8 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation()
     const [isLoginModal, setIsLoginModal] = useState(false)
+    const authData = useAppSelector(selectUserAuthData)
+    const dispatch = useAppDispatch()
 
     const showLoginModal = useCallback(() => {
         setIsLoginModal(true)
@@ -20,6 +24,27 @@ export const Navbar = ({ className }: NavbarProps) => {
     const closeLoginModal = useCallback(() => {
         setIsLoginModal(false)
     }, [])
+
+    const logOut = useCallback(() => {
+        dispatch(userActions.logOut())
+    }, [dispatch])
+
+    if (authData) {
+        return (
+            <div className={cn(cls.Navbar, {}, [className])}>
+                <div className={cls.Links}>
+                    <div className={cls.Link}>
+                        <Button
+                            theme={ButtonTheme.BACKGROUND_INVERTED}
+                            onClick={logOut}
+                        >
+                            {t('LogOut')}
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={cn(cls.Navbar, {}, [className])}>

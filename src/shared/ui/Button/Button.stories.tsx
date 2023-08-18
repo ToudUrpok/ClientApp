@@ -49,6 +49,14 @@ export const Outlined: Story = {
     }
 }
 
+export const OutlinedDisabled: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.OUTLINED,
+        disabled: true
+    }
+}
+
 export const OutlinedSizeXL: Story = {
     args: {
         children: 'Text',
@@ -61,6 +69,17 @@ export const OutlinedDark: Story = {
     args: {
         children: 'Text',
         theme: ButtonTheme.OUTLINED
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+}
+
+export const OutlinedDarkDisabled: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.OUTLINED,
+        disabled: true
     },
     decorators: [
         ThemeDecorator(Theme.DARK)

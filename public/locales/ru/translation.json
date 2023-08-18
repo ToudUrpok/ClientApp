@@ -12,5 +12,8 @@
   "Log In": "Войти",
   "ModalTestContent": "Модальное окно с тестовым сообщением ...",
   "EmailInputPlaceholder": "youremail@gmail.com",
-  "Password": "пароль"
+  "Password": "пароль",
+  "LoginError": "Ошибка авторизации",
+  "Login": "Вход",
+  "LogOut": "Выйти"
 }
