@@ -9,11 +9,11 @@ import { loginActions, selectLoginSchema } from 'features/AuthByUsername'
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string
 }
 
-export const LoginForm = ({ className }: LoginFormProps) => {
+const LoginForm = ({ className }: LoginFormProps) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const { username, password, isLoading, error } = useAppSelector(selectLoginSchema)
@@ -59,3 +59,5 @@ export const LoginForm = ({ className }: LoginFormProps) => {
         </div>
     )
 }
+
+export default LoginForm
