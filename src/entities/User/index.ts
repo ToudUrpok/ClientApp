@@ -6,5 +6,5 @@ export {
     selectUserAuthData
 } from './model/slice/userSlice'
 
-export type { UserSlice } from './model/slice/userSlice'
+export type { UserState } from './model/slice/userSlice'
 export type { IUser } from './model/types/user'

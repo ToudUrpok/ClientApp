@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from 'app/store/store'
+import { StateSchema } from 'app/store/StateSchema'
 import { IUser } from '../types/user'
 import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
 
-export interface UserSlice {
+export interface UserState {
     authData?: IUser
 }
 
-const initialState: UserSlice = {
+const initialState: UserState = {
 
 }
 
@@ -37,5 +37,5 @@ const userSlice = createSlice({
     }
 })
 
-export const selectUserAuthData = (state: RootState): IUser => state.user.authData
+export const selectUserAuthData = (state: StateSchema): IUser => state.user.authData
 export const { reducer, actions } = userSlice

@@ -1,26 +1,28 @@
 import {
-    PreloadedState,
-    combineReducers,
+    ReducersMapObject,
     configureStore
 } from '@reduxjs/toolkit'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
-import { loginReducer } from 'features/AuthByUsername'
+import { createReducerManager } from './reducerManager'
+import { StateSchema } from './StateSchema'
 
-const rootReducer = combineReducers({
+const staticReducers: ReducersMapObject<StateSchema> = {
     counter: counterReducer,
-    user: userReducer,
-    login: loginReducer
-})
-
-export function setupStore (preloadedState?: PreloadedState<RootState>) {
-    return configureStore({
-        reducer: rootReducer,
-        devTools: __IS_DEV__,
-        preloadedState
-    })
+    user: userReducer
 }
 
-export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore>
-export type AppDispatch = AppStore['dispatch']
+export function setupStore (initialState?: StateSchema) {
+    const reducerManager = createReducerManager(staticReducers)
+
+    const store = configureStore({
+        reducer: reducerManager.reduce,
+        devTools: __IS_DEV__,
+        preloadedState: initialState
+    })
+
+    // @ts-expect-error
+    store.reducerManager = reducerManager
+
+    return store
+}

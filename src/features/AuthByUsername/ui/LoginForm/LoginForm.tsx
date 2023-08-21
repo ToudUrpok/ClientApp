@@ -5,18 +5,34 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Input } from 'shared/ui/Input/Input'
 import { useCallback } from 'react'
 import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
-import { loginActions, selectLoginSchema } from 'features/AuthByUsername'
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername'
+import {
+    actions as loginActions,
+    reducer as loginReducer,
+    selectLoginError,
+    selectLoginIsLoading,
+    selectLoginPassword,
+    selectLoginUsername
+} from '../../model/slice/loginSlice'
+import { loginByUsername } from '../../model/services/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { ReducersList, useDynamicReducer } from 'shared/hooks/useDynamicReducer'
 
 export interface LoginFormProps {
     className?: string
 }
 
+const reducersToLoad: ReducersList = {
+    login: loginReducer
+}
+
 const LoginForm = ({ className }: LoginFormProps) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
-    const { username, password, isLoading, error } = useAppSelector(selectLoginSchema)
+    const username = useAppSelector(selectLoginUsername)
+    const password = useAppSelector(selectLoginPassword)
+    const error = useAppSelector(selectLoginError)
+    const isLoading = useAppSelector(selectLoginIsLoading)
+    useDynamicReducer(reducersToLoad, true)
 
     const handleEmailChange = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value))

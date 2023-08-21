@@ -1,5 +1,5 @@
 import { DeepPartial } from '@reduxjs/toolkit'
-import { RootState } from 'app/store/store'
+import { StateSchema } from 'app/store/StateSchema'
 import { CounterState, actions, reducer, selectCounterValue } from './counterSlice'
 
 describe('counterSlice', () => {
@@ -14,11 +14,11 @@ describe('counterSlice', () => {
     })
 
     test('test selector', () => {
-        const state: DeepPartial<RootState> = {
+        const state: DeepPartial<StateSchema> = {
             counter: initialState
         }
 
-        expect(selectCounterValue(state as RootState)).toEqual(10)
+        expect(selectCounterValue(state)).toEqual(10)
     })
 
     test('test increment', () => {

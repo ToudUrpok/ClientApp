@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from 'app/store/store'
+import { createSlice, PayloadAction, DeepPartial } from '@reduxjs/toolkit'
+import { StateSchema } from 'app/store/StateSchema'
 
 export interface CounterState {
     value: number
@@ -22,5 +22,5 @@ const counterSlice = createSlice({
     }
 })
 
-export const selectCounterValue = (state: RootState) => state.counter.value
+export const selectCounterValue = (state: DeepPartial<StateSchema>): number => state.counter.value
 export const { reducer, actions } = counterSlice

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { LoginSchema } from '../types/loginSchema'
-import { RootState } from 'app/store/store'
+import { LoginState } from '../types/loginState'
+import { StateSchema } from 'app/store/StateSchema'
 import { loginByUsername } from '../services/loginByUsername'
 
-const initialState: LoginSchema = {
+const initialState: LoginState = {
     username: '',
     password: '',
     isLoading: false
@@ -35,5 +35,10 @@ const loginSlice = createSlice({
     }
 })
 
-export const selectLoginSchema = (state: RootState): LoginSchema => state.login
+export const selectLoginState = (state: StateSchema): LoginState => state.login
+export const selectLoginUsername = (state: StateSchema): string => state?.login?.username || ''
+export const selectLoginPassword = (state: StateSchema): string => state?.login?.password || ''
+export const selectLoginIsLoading = (state: StateSchema): boolean => state?.login?.isLoading || false
+export const selectLoginError = (state: StateSchema): string => state?.login?.error
+
 export const { reducer, actions } = loginSlice

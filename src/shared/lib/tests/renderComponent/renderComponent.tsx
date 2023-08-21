@@ -6,11 +6,11 @@ import { MemoryRouter } from 'react-router-dom'
 import i18nForTests from 'shared/config/i18n/i18nForTests'
 import { AppRoutes } from 'shared/config/routeConfig/routeConfig'
 import { DeepPartial } from '@reduxjs/toolkit'
-import { RootState } from 'app/store/store'
+import { StateSchema } from 'app/store/StateSchema'
 
 export interface RenderComponentOptions {
     initRoute?: string
-    initStoreState?: DeepPartial<RootState>
+    initStoreState?: DeepPartial<StateSchema>
 }
 
 export function renderComponent (component: ReactNode, options: RenderComponentOptions = {}) {
@@ -20,7 +20,7 @@ export function renderComponent (component: ReactNode, options: RenderComponentO
     } = options
 
     return render(
-        <StoreProvider initialState={initStoreState as RootState}>
+        <StoreProvider initialState={ initStoreState as StateSchema }>
             <MemoryRouter initialEntries={[initRoute]}>
                 <I18nextProvider i18n={i18nForTests}>
                     {component}

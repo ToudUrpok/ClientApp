@@ -1,9 +1,8 @@
 export { LoginModal } from './ui/LoginModal/LoginModal'
 
 export {
-    reducer as loginReducer,
     actions as loginActions,
-    selectLoginSchema
+    selectLoginState
 } from './model/slice/loginSlice'
 
-export type { LoginSchema } from './model/types/loginSchema'
+export type { LoginState } from './model/types/loginState'
