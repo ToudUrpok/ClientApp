@@ -1,7 +1,15 @@
 import { DeepPartial } from '@reduxjs/toolkit'
 import { StateSchema } from 'app/store/StateSchema'
 import { LoginState } from '../types/loginState'
-import { selectLoginError, selectLoginIsLoading, selectLoginPassword, selectLoginState, selectLoginUsername } from './loginSlice'
+import {
+    reducer as loginReducer,
+    actions as loginActions,
+    selectLoginError,
+    selectLoginIsLoading,
+    selectLoginPassword,
+    selectLoginState,
+    selectLoginUsername
+} from './loginSlice'
 
 describe('Test loginSlice', () => {
     const testUsername = 'Eugene'
@@ -65,5 +73,18 @@ describe('Test loginSlice', () => {
     test('selectLoginError from undefined state', () => {
         const state: DeepPartial<StateSchema> = {}
         expect(selectLoginError(state as StateSchema)).toEqual(undefined)
+    })
+
+    test('setUsername', () => {
+        const state: DeepPartial<LoginState> = {}
+        expect(selectLoginUsername(state as StateSchema)).not.toEqual(testUsername)
+        expect(loginReducer(state as LoginState, loginActions.setUsername(testUsername)))
+            .toEqual({ username: testUsername })
+    })
+    test('setPassword', () => {
+        const state: DeepPartial<LoginState> = {}
+        expect(selectLoginPassword(state as StateSchema)).not.toEqual(testPassword)
+        expect(loginReducer(state as LoginState, loginActions.setPassword(testPassword)))
+            .toEqual({ password: testPassword })
     })
 })
