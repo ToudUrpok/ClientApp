@@ -19,13 +19,14 @@ import { ReducersList, useDynamicReducer } from 'shared/hooks/useDynamicReducer'
 
 export interface LoginFormProps {
     className?: string
+    onSuccess: () => void
 }
 
 const reducersToLoad: ReducersList = {
     login: loginReducer
 }
 
-const LoginForm = ({ className }: LoginFormProps) => {
+const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const username = useAppSelector(selectLoginUsername)
@@ -42,9 +43,12 @@ const LoginForm = ({ className }: LoginFormProps) => {
         dispatch(loginActions.setPassword(value))
     }, [dispatch])
 
-    const handleLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }))
-    }, [dispatch, username, password])
+    const handleLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }))
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess()
+        }
+    }, [dispatch, username, password, onSuccess])
 
     return (
         <div className={cn(cls.LoginForm, {}, [className])}>

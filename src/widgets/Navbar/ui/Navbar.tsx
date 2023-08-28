@@ -26,6 +26,7 @@ export const Navbar = ({ className }: NavbarProps) => {
     }, [])
 
     const logOut = useCallback(() => {
+        setIsLoginModal(false)
         dispatch(userActions.logOut())
     }, [dispatch])
 
