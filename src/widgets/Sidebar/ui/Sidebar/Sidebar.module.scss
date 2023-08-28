@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.collapsed {
+    width: var(--sidebar-collapsed-width);
+}
+
 .Switchers {
     position: absolute;
     bottom: 20px;
@@ -29,29 +33,4 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-}
-
-.LinkItem {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.LinkItemLink {
-    opacity: 1;
-}
-
-.LinkItemIcon {
-    margin-right: 10px;
-    fill: var(--contrast-color);
-}
-
-.collapsed {
-    width: var(--sidebar-collapsed-width);
-
-    .LinkItemLink {
-        opacity: 0;
-        transition: 0.2s opacity;
-        width: 0;
-    }
 }

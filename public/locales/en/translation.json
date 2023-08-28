@@ -15,5 +15,6 @@
   "Password": "password",
   "LoginError": "Login Error",
   "Login": "Login",
-  "LogOut": "Log Out"
+  "LogOut": "Log Out",
+  "Profile": "Profile"
 }

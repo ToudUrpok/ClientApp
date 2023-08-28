@@ -9,6 +9,7 @@ import { CounterState } from 'entities/Counter'
 import { UserState } from 'entities/User'
 import { LoginState } from 'features/AuthByUsername'
 import { setupStore } from './store'
+import { ProfileState } from 'entities/Profile'
 
 export type AppStore = ReturnType<typeof setupStore>
 export type AppDispatch = AppStore['dispatch']
@@ -17,6 +18,7 @@ export interface StateSchema {
     counter: CounterState
     user: UserState
     login?: LoginState
+    profile?: ProfileState
 }
 
 export type StateSchemaKey = keyof StateSchema

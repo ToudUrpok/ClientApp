@@ -25,5 +25,14 @@
             "password": "123"
         }
     ],
-    "profile": { "name": "typicode" }
+    "profile": { 
+        "firstname": "Zhenya",
+        "lastname": "Yakubovich",
+        "age": 22,
+        "country": "Belarus",
+        "city": "Minsk",
+        "currency": "BYN",
+        "username": "admin",
+        "avatar": "https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg"
+    }
 }

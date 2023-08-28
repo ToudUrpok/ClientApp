@@ -1,6 +1,6 @@
 import { cn } from 'shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
-import { FC } from 'react'
+import { memo } from 'react'
 
 export enum TextTheme {
     PRIMARY = 'primary',
@@ -14,7 +14,7 @@ interface TextProps {
     theme?: TextTheme
 }
 
-export const Text: FC<TextProps> = (props) => {
+export const Text = memo((props: TextProps) => {
     const {
         className,
         title,
@@ -28,4 +28,4 @@ export const Text: FC<TextProps> = (props) => {
             {text && <p className={cls.textBlock}>{text}</p>}
         </div>
     )
-}
+})

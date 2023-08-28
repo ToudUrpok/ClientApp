@@ -1,0 +1,22 @@
+.SidebarItem {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.SidebarItemLink {
+    opacity: 1;
+}
+
+.collapsed {
+    .SidebarItemLink {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
+}
+
+.SidebarItemIcon {
+    margin-right: 10px;
+    fill: var(--contrast-color);
+}

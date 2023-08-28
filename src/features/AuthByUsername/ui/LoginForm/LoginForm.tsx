@@ -3,7 +3,7 @@ import cls from './LoginForm.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Input } from 'shared/ui/Input/Input'
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
 import {
     actions as loginActions,
@@ -26,7 +26,7 @@ const reducersToLoad: ReducersList = {
     login: loginReducer
 }
 
-const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
     const username = useAppSelector(selectLoginUsername)
@@ -78,6 +78,6 @@ const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
             </Button>
         </div>
     )
-}
+})
 
 export default LoginForm
