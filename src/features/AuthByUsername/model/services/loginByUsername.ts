@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
 import { IUser, userActions } from 'entities/User'
+import { $API } from 'shared/api/APIInstance'
 import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
 
 interface LoginByUsernameProps {
@@ -12,7 +12,7 @@ export const loginByUsername = createAsyncThunk<IUser, LoginByUsernameProps, { r
     'login/loginByUsername',
     async (loginData, thunkAPI) => {
         try {
-            const response = await axios.post('http://localhost:8000/login', loginData)
+            const response = await $API.post<IUser>('/login', loginData)
             if (!response.data) {
                 throw new Error()
             }
