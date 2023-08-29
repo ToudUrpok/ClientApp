@@ -37,5 +37,5 @@ const userSlice = createSlice({
     }
 })
 
-export const selectUserAuthData = (state: StateSchema): IUser => state.user.authData
+export const selectUserAuthData = (state: StateSchema): IUser | undefined => state.user.authData
 export const { reducer, actions } = userSlice

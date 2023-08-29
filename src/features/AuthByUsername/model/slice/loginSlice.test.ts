@@ -25,31 +25,31 @@ describe('Test loginSlice', () => {
 
     test('selectLoginState from initialized state', () => {
         const state: DeepPartial<StateSchema> = {
-            login: loginInitState
+            login: loginInitState as LoginState
         }
         expect(selectLoginState(state as StateSchema)).toEqual(loginInitState)
     })
     test('selectLoginUsername from initialized state', () => {
         const state: DeepPartial<StateSchema> = {
-            login: loginInitState
+            login: loginInitState as LoginState
         }
         expect(selectLoginUsername(state as StateSchema)).toEqual(testUsername)
     })
     test('selectLoginPassword from initialized state', () => {
         const state: DeepPartial<StateSchema> = {
-            login: loginInitState
+            login: loginInitState as LoginState
         }
         expect(selectLoginPassword(state as StateSchema)).toEqual(testPassword)
     })
     test('selectLoginIsLoading from initialized state', () => {
         const state: DeepPartial<StateSchema> = {
-            login: loginInitState
+            login: loginInitState as LoginState
         }
         expect(selectLoginIsLoading(state as StateSchema)).toEqual(false)
     })
     test('selectLoginError from initialized state', () => {
         const state: DeepPartial<StateSchema> = {
-            login: loginInitState
+            login: loginInitState as LoginState
         }
         expect(selectLoginError(state as StateSchema)).toEqual(testError)
     })

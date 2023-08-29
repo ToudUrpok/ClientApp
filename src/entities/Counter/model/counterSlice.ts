@@ -22,5 +22,5 @@ const counterSlice = createSlice({
     }
 })
 
-export const selectCounterValue = (state: DeepPartial<StateSchema>): number => state.counter.value
+export const selectCounterValue = (state: DeepPartial<StateSchema>): number | undefined => state.counter?.value
 export const { reducer, actions } = counterSlice

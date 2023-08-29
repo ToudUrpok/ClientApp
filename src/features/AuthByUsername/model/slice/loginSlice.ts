@@ -35,10 +35,10 @@ const loginSlice = createSlice({
     }
 })
 
-export const selectLoginState = (state: StateSchema): LoginState => state.login
-export const selectLoginUsername = (state: StateSchema): string => state?.login?.username || ''
-export const selectLoginPassword = (state: StateSchema): string => state?.login?.password || ''
-export const selectLoginIsLoading = (state: StateSchema): boolean => state?.login?.isLoading || false
-export const selectLoginError = (state: StateSchema): string => state?.login?.error
+export const selectLoginState = (state: StateSchema): LoginState | undefined => state.login
+export const selectLoginUsername = (state: StateSchema): string => state.login?.username || ''
+export const selectLoginPassword = (state: StateSchema): string => state.login?.password || ''
+export const selectLoginIsLoading = (state: StateSchema): boolean => state.login?.isLoading || false
+export const selectLoginError = (state: StateSchema): string | undefined => state.login?.error
 
 export const { reducer, actions } = loginSlice

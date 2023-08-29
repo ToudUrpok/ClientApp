@@ -1,3 +1,7 @@
 {
-  "ProfilePageHeader": "Страница Профиля"
+  "profile.ProfilePageHeader": "Страница Профиля",
+  "profile.Profile": "Профиль",
+  "profile.Edit": "Редактировать",
+  "profile.FirstName": "Имя",
+  "profile.LastName": "Фамилия"
 }

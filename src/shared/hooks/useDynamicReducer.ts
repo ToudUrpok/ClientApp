@@ -8,21 +8,19 @@ export type ReducersList = {
     [reducerKey in StateSchemaKey]?: Reducer
 }
 
-type ReducerListEntry = [StateSchemaKey, Reducer]
-
 export function useDynamicReducer (reducers: ReducersList, removeAfterUnmount?: boolean): void {
     const dispatch = useAppDispatch()
     const store = useStore() as ManagedReduxStore
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([reducerKey, reducer]: ReducerListEntry) => {
-            store.reducerManager.add(reducerKey, reducer)
+        Object.entries(reducers).forEach(([reducerKey, reducer]) => {
+            store.reducerManager.add(reducerKey as StateSchemaKey, reducer)
             dispatch({ type: `@INIT ${reducerKey} reducer` })
         })
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([reducerKey]: ReducerListEntry) => {
+                Object.entries(reducers).forEach(([reducerKey]) => {
                     store.reducerManager.remove('login')
                     dispatch({ type: `@DESTROY ${reducerKey} reducer` })
                 })

@@ -1,3 +1,7 @@
 {
-  "ProfilePageHeader": "Profile Page"
+  "profile.ProfilePageHeader": "Profile Page",
+  "profile.Profile": "Profile",
+  "profile.Edit": "Edit",
+  "profile.FirstName": "First Name",
+  "profile.LastName": "Last Name"
 }
