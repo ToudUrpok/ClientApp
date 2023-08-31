@@ -1,7 +1,9 @@
 import { useAppDispatch } from 'app/hooks/redux'
 import { ProfileCard, fetchProfileData, profileReducer } from 'entities/Profile'
+import { IUser } from 'entities/User'
 import { memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
 import { ReducersList, useDynamicReducer } from 'shared/hooks/useDynamicReducer'
 import { Text } from 'shared/ui/Text/Text'
 
@@ -15,7 +17,8 @@ const ProfilePage = memo(() => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(fetchProfileData())
+        const user = JSON.parse(localStorage.getItem(USER_AUTH_TOKEN) ?? '') as IUser
+        dispatch(fetchProfileData(user.id))
     }, [dispatch])
 
     return (

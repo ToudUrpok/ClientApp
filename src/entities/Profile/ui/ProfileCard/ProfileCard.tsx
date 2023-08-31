@@ -19,7 +19,7 @@ export const ProfileCard = ({ className }: ProfileCardProps) => {
 
     return (
         <div className={cn(cls.ProfileCard, {}, [className])}>
-            <Text title={profileData?.username ?? t('profile.Profile')} />
+            <Text title={t('profile.Profile')} />
             <div className={cls.data} >
                 <Input
                     value={profileData?.firstname ?? ''}

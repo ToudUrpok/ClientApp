@@ -48,6 +48,26 @@ server.use((req, res, next) => {
     next();
 });
 
+server.get('/profiles/:id', (req, res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+        const { profiles = [] } = db;
+
+        const profileFromBd = profiles.find(
+            (profile) => profile.user_id === req.params.id,
+        );
+
+        if (profileFromBd) {
+            return res.json(profileFromBd);
+        }
+
+        return res.status(403).json({ message: 'Profile not found' });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
 server.use(router);
 
 // запуск сервера
