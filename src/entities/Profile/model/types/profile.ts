@@ -10,6 +10,9 @@ export interface IProfile {
 }
 
 export interface ProfileForm {
-    firstname: string | undefined
-    lastname: string | undefined
+    firstname?: string
+    lastname?: string
+    age?: number
+    country?: string
+    avatar?: string
 }

@@ -8,7 +8,6 @@ interface ProfilePageHeaderProps {
     className?: string
     readonly: boolean
     onEdit: () => void
-    isSaveEnabled: boolean
     onSave: () => void
     onCancel: () => void
 }
@@ -18,17 +17,10 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         className,
         readonly,
         onEdit,
-        isSaveEnabled,
         onSave,
         onCancel
     } = props
     const { t } = useTranslation('profile')
-
-    const handleSaveClick = () => {
-        if (isSaveEnabled) {
-            onSave()
-        }
-    }
 
     return (
         <div className={cn(cls.ProfilePageHeader, {}, [className])}>
@@ -59,8 +51,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                         <Button
                             className={cls.Btn}
                             theme={ButtonTheme.OUTLINED}
-                            disabled={!isSaveEnabled}
-                            onClick={handleSaveClick}
+                            onClick={onSave}
                         >
                             {t('profile.Save')}
                         </Button>

@@ -6,5 +6,8 @@
   "profile.LastName": "Фамилия",
   "profile.ProfileDataLoadingError": "При загрузке данных о профиле произошла ошибка. Попробуйте перезагрузить страницу.",
   "profile.Cancel": "Отменить",
-  "profile.Save": "Сохранить"
+  "profile.Save": "Сохранить",
+  "profile.Age": "Возраст",
+  "profile.Country": "Страна",
+  "profile.AvatarLink": "Ссылка на изображение профиля"
 }

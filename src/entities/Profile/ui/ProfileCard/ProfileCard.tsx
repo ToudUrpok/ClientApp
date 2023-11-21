@@ -5,16 +5,21 @@ import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
 import { IProfile, ProfileForm } from '../../model/types/profile'
 import { Loader } from 'shared/ui/Loader/Loader'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { useMemo } from 'react'
 
 interface ProfileCardProps {
     className?: string
-    profileData: IProfile | undefined
-    profileForm: ProfileForm
-    isLoading: boolean
-    error: string
-    readonly: boolean
-    onChangeFirstname: (value?: string) => void
-    onChangeLastname: (value?: string) => void
+    profileData?: IProfile | undefined
+    profileForm?: ProfileForm
+    isLoading?: boolean
+    error?: string
+    readonly?: boolean
+    onChangeFirstname?: (value?: string) => void
+    onChangeLastname?: (value?: string) => void
+    onChangeAge?: (value?: string) => void
+    onChangeCountry?: (value?: string) => void
+    onChangeAvatar?: (value?: string) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -25,11 +30,28 @@ export const ProfileCard = (props: ProfileCardProps) => {
         isLoading,
         error,
         readonly,
-        onChangeFirstname,
-        onChangeLastname
+        onChangeFirstname = () => {},
+        onChangeLastname = () => {},
+        onChangeAge = () => {},
+        onChangeCountry = () => {},
+        onChangeAvatar = () => {}
     } = props
 
     const { t } = useTranslation('profile')
+
+    const getAlt = useMemo((): string => {
+        let alt = ':)'
+        if (readonly) {
+            if (profileData?.firstname && profileData?.lastname) {
+                alt = `${profileData?.firstname[0].toUpperCase()}${profileData?.lastname[0].toUpperCase()}`
+            }
+        } else {
+            if (profileForm?.firstname && profileForm?.lastname) {
+                alt = `${profileForm?.firstname[0].toUpperCase()}${profileForm?.lastname[0].toUpperCase()}`
+            }
+        }
+        return alt
+    }, [readonly, profileData?.firstname, profileData?.lastname, profileForm?.firstname, profileForm?.lastname])
 
     if (isLoading) {
         return (
@@ -54,6 +76,11 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <div className={cn(cls.ProfileCard, {}, [className])}>
             <div className={cls.data} >
+                <Avatar
+                    src={readonly ? profileData?.avatar : profileForm?.avatar}
+                    alt={getAlt}
+                    size={150}
+                />
                 <Input
                     value={readonly ? profileData?.firstname ?? '' : profileForm?.firstname ?? ''}
                     placeholder={t('profile.FirstName')}
@@ -65,6 +92,28 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     value={readonly ? profileData?.lastname ?? '' : profileForm?.lastname ?? ''}
                     placeholder={t('profile.LastName')}
                     onChange={onChangeLastname}
+                    className={cls.inputField}
+                    readOnly={readonly}
+                />
+                <Input
+                    value={readonly ? profileData?.age ?? '' : profileForm?.age ?? ''}
+                    placeholder={t('profile.Age')}
+                    type='number'
+                    onChange={onChangeAge}
+                    className={cls.inputField}
+                    readOnly={readonly}
+                />
+                <Input
+                    value={readonly ? profileData?.country ?? '' : profileForm?.country ?? ''}
+                    placeholder={t('profile.Country')}
+                    onChange={onChangeCountry}
+                    className={cls.inputField}
+                    readOnly={readonly}
+                />
+                <Input
+                    value={readonly ? profileData?.avatar ?? '' : profileForm?.avatar ?? ''}
+                    placeholder={t('profile.AvatarLink')}
+                    onChange={onChangeAvatar}
                     className={cls.inputField}
                     readOnly={readonly}
                 />

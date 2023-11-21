@@ -31,22 +31,22 @@
         }
     ],
     "profiles": [
-        { 
+        {
             "user_id": "1",
-            "firstname": "Zhenya",
+            "firstname": "Eugene",
             "lastname": "Yakubovich",
-            "age": 22,
+            "age": 23,
             "country": "Belarus",
             "city": "Minsk",
             "currency": "BYN",
             "avatar": "https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg"
         },
-        { 
+        {
             "user_id": "2",
-            "firstname": "Vladimir",
-            "lastname": "Lenin",
+            "firstname": "Владимир",
+            "lastname": "Ленин",
             "age": 54,
-            "country": "USSR",
+            "country": "СССР",
             "city": "Ulianovsk",
             "currency": "RUB",
             "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/800px-Vladimir_Lenin.jpg"

@@ -20,5 +20,9 @@ export {
 } from './model/services/fetchProfileData'
 
 export {
+    updateProfileData
+} from './model/services/updateProfileData'
+
+export {
     ProfileCard
 } from './ui/ProfileCard/ProfileCard'

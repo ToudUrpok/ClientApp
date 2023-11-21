@@ -6,5 +6,8 @@
   "profile.LastName": "Last Name",
   "profile.ProfileDataLoadingError": "Error happened while Profile Data loading. Try to refresh the page.",
   "profile.Cancel": "Cancel",
-  "profile.Save": "Save"
+  "profile.Save": "Save",
+  "profile.Age": "Age",
+  "profile.Country": "Country",
+  "profile.AvatarLink": "Profile Image link"
 }

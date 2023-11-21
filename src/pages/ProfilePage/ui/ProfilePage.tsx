@@ -4,11 +4,11 @@ import {
     ProfileCard,
     ProfileForm,
     fetchProfileData,
-    profileActions,
     profileReducer,
     selectProfileData,
     selectProfileError,
-    selectProfileIsLoading
+    selectProfileIsLoading,
+    updateProfileData
 } from 'entities/Profile'
 import { IUser } from 'entities/User'
 import { memo, useCallback, useEffect, useState } from 'react'
@@ -28,10 +28,12 @@ const ProfilePage = memo(() => {
     const profileData = useAppSelector(selectProfileData)
 
     const [readonly, setReadonly] = useState<boolean>(true)
-    const [isEdited, setIsEdited] = useState<boolean>(false)
     const [profileForm, setProfileForm] = useState<ProfileForm>({
         firstname: profileData?.firstname,
-        lastname: profileData?.lastname
+        lastname: profileData?.lastname,
+        age: profileData?.age,
+        country: profileData?.country,
+        avatar: profileData?.avatar
     })
 
     useEffect(() => {
@@ -42,54 +44,75 @@ const ProfilePage = memo(() => {
     const refreshProfileForm = useCallback(() => {
         setProfileForm({
             firstname: profileData?.firstname,
-            lastname: profileData?.lastname
+            lastname: profileData?.lastname,
+            age: profileData?.age,
+            country: profileData?.country,
+            avatar: profileData?.avatar
         })
     }, [profileData])
 
-    const onEnableEditMode = useCallback(() => {
+    const enableEditMode = useCallback(() => {
         refreshProfileForm()
-        setIsEdited(false)
         setReadonly(false)
     }, [refreshProfileForm])
 
-    const onUpdateProfileData = useCallback(() => {
-        if (profileData) {
-            dispatch(profileActions.updateProfile({
-                ...profileData,
-                firstname: profileForm.firstname,
-                lastname: profileForm.lastname
-            }))
-        }
-        refreshProfileForm()
-        setReadonly(true)
-    }, [dispatch, profileData, profileForm, refreshProfileForm])
-
-    const onCancelChanges = useCallback(() => {
+    const disableEditMode = useCallback(() => {
         refreshProfileForm()
         setReadonly(true)
     }, [refreshProfileForm])
 
-    const areChangesMade = useCallback((): boolean => {
-        return profileForm.firstname === profileData?.firstname ||
-               profileForm.lastname === profileData?.lastname
+    const isEdited = useCallback((): boolean => {
+        const edited = profileForm.firstname !== profileData?.firstname ||
+                       profileForm.lastname !== profileData?.lastname ||
+                       profileForm.age !== profileData?.age ||
+                       profileForm.country !== profileData?.country ||
+                       profileForm.avatar !== profileData?.avatar
+        return edited
     }, [profileData, profileForm])
+
+    const onUpdateProfileData = useCallback(async () => {
+        if (profileData && isEdited()) {
+            await dispatch(updateProfileData({
+                ...profileData,
+                firstname: profileForm.firstname,
+                lastname: profileForm.lastname,
+                age: profileForm.age,
+                country: profileForm.country,
+                avatar: profileForm.avatar
+            }))
+        }
+        disableEditMode()
+    }, [isEdited, dispatch, profileData, profileForm, disableEditMode])
+
+    const onCancelChanges = useCallback(() => {
+        disableEditMode()
+    }, [disableEditMode])
 
     const onChangeFirstname = useCallback((value?: string) => {
         setProfileForm({ ...profileForm, firstname: value })
-        setIsEdited(areChangesMade())
-    }, [profileForm, areChangesMade])
+    }, [profileForm])
 
     const onChangeLastname = useCallback((value?: string) => {
         setProfileForm({ ...profileForm, lastname: value })
-        setIsEdited(areChangesMade())
-    }, [profileForm, areChangesMade])
+    }, [profileForm])
+
+    const onChangeAge = useCallback((value?: string) => {
+        setProfileForm({ ...profileForm, age: Number(value) })
+    }, [profileForm])
+
+    const onChangeCountry = useCallback((value?: string) => {
+        setProfileForm({ ...profileForm, country: value })
+    }, [profileForm])
+
+    const onChangeAvatar = useCallback((value?: string) => {
+        setProfileForm({ ...profileForm, avatar: value })
+    }, [profileForm])
 
     return (
         <div className={cls.ProfilePage}>
             <ProfilePageHeader
                 readonly={readonly}
-                onEdit={onEnableEditMode}
-                isSaveEnabled={isEdited}
+                onEdit={enableEditMode}
                 onSave={onUpdateProfileData}
                 onCancel={onCancelChanges}
             />
@@ -101,6 +124,9 @@ const ProfilePage = memo(() => {
                 readonly={readonly}
                 onChangeFirstname={onChangeFirstname}
                 onChangeLastname={onChangeLastname}
+                onChangeAge={onChangeAge}
+                onChangeCountry={onChangeCountry}
+                onChangeAvatar={onChangeAvatar}
             />
         </div>
     )
