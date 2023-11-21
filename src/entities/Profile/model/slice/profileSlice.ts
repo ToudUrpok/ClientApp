@@ -20,7 +20,17 @@ const initialState: ProfileState = {
 const profileSlice = createSlice({
     name: 'profile',
     initialState,
-    reducers: {},
+    reducers: {
+        setReadonly: (state, action: PayloadAction<boolean>) => {
+            state.readonly = action.payload
+        },
+        updateProfile: (state, action: PayloadAction<IProfile>) => {
+            state.profileData = {
+                ...state.profileData,
+                ...action.payload
+            }
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchProfileData.pending, (state) => {
             state.error = undefined
@@ -41,5 +51,6 @@ export const selectProfileState = (state: StateSchema): ProfileState | undefined
 export const selectProfileIsLoading = (state: StateSchema): boolean => state?.profile?.isLoading || false
 export const selectProfileError = (state: StateSchema): string => state?.profile?.error || ''
 export const selectProfileData = (state: StateSchema): IProfile | undefined => state.profile?.profileData
+export const selectProfileReadonly = (state: StateSchema): boolean => state?.profile?.readonly || false
 
 export const { reducer, actions } = profileSlice

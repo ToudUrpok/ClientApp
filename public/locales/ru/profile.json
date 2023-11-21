@@ -3,5 +3,8 @@
   "profile.Profile": "Профиль",
   "profile.Edit": "Редактировать",
   "profile.FirstName": "Имя",
-  "profile.LastName": "Фамилия"
+  "profile.LastName": "Фамилия",
+  "profile.ProfileDataLoadingError": "При загрузке данных о профиле произошла ошибка. Попробуйте перезагрузить страницу.",
+  "profile.Cancel": "Отменить",
+  "profile.Save": "Сохранить"
 }

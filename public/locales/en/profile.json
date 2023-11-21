@@ -3,5 +3,8 @@
   "profile.Profile": "Profile",
   "profile.Edit": "Edit",
   "profile.FirstName": "First Name",
-  "profile.LastName": "Last Name"
+  "profile.LastName": "Last Name",
+  "profile.ProfileDataLoadingError": "Error happened while Profile Data loading. Try to refresh the page.",
+  "profile.Cancel": "Cancel",
+  "profile.Save": "Save"
 }

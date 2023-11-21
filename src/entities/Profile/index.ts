@@ -9,7 +9,10 @@ export type {
 export {
     reducer as profileReducer,
     actions as profileActions,
-    selectProfileData
+    selectProfileData,
+    selectProfileIsLoading,
+    selectProfileError,
+    selectProfileReadonly
 } from './model/slice/profileSlice'
 
 export {

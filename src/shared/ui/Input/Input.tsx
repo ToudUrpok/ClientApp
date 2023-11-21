@@ -12,6 +12,7 @@ interface InputProps extends HTMLInputProps {
     value: string
     onChange: (value: string) => void
     type?: string
+    readOnly?: boolean
 }
 
 export const Input = memo((props: InputProps) => {
@@ -23,6 +24,7 @@ export const Input = memo((props: InputProps) => {
         value,
         onChange,
         type = TEXT_INPUT_TYPE,
+        readOnly,
         ...otherProps
     } = props
 
@@ -36,15 +38,20 @@ export const Input = memo((props: InputProps) => {
         onChange?.(e.target.value)
     }
 
+    const attributes: Record<string, boolean | undefined> = {
+        [cls.readonly]: readOnly
+    }
+
     return (
         <div
-            className={cn(cls.Input, {}, [className])}
+            className={cn(cls.Input, attributes, [className])}
         >
             <input
                 className={cls.Input_Input}
                 value={value}
                 onChange={changeEventHandler}
                 type={btnType}
+                readOnly={readOnly}
                 {...otherProps}
             />
             {(type === PASSWORD_INPUT_TYPE) &&
