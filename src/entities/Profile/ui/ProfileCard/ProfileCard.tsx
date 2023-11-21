@@ -3,24 +3,30 @@ import cls from './ProfileCard.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
-import { IProfile } from '../../model/types/profile'
+import { IProfile, ProfileForm } from '../../model/types/profile'
 import { Loader } from 'shared/ui/Loader/Loader'
 
 interface ProfileCardProps {
     className?: string
-    profileData?: IProfile
-    isLoading?: boolean
-    error?: string
-    readonly?: boolean
+    profileData: IProfile | undefined
+    profileForm: ProfileForm
+    isLoading: boolean
+    error: string
+    readonly: boolean
+    onChangeFirstname: (value?: string) => void
+    onChangeLastname: (value?: string) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
     const {
         className,
         profileData,
+        profileForm,
         isLoading,
         error,
-        readonly
+        readonly,
+        onChangeFirstname,
+        onChangeLastname
     } = props
 
     const { t } = useTranslation('profile')
@@ -49,16 +55,16 @@ export const ProfileCard = (props: ProfileCardProps) => {
         <div className={cn(cls.ProfileCard, {}, [className])}>
             <div className={cls.data} >
                 <Input
-                    value={profileData?.firstname ?? ''}
+                    value={readonly ? profileData?.firstname ?? '' : profileForm?.firstname ?? ''}
                     placeholder={t('profile.FirstName')}
-                    onChange={() => {}}
+                    onChange={onChangeFirstname}
                     className={cls.inputField}
                     readOnly={readonly}
                 />
                 <Input
-                    value={profileData?.lastname ?? ''}
+                    value={readonly ? profileData?.lastname ?? '' : profileForm?.lastname ?? ''}
                     placeholder={t('profile.LastName')}
-                    onChange={() => {}}
+                    onChange={onChangeLastname}
                     className={cls.inputField}
                     readOnly={readonly}
                 />

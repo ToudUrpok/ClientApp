@@ -1,5 +1,6 @@
 export type {
-    IProfile
+    IProfile,
+    ProfileForm
 } from './model/types/profile'
 
 export type {
@@ -11,8 +12,7 @@ export {
     actions as profileActions,
     selectProfileData,
     selectProfileIsLoading,
-    selectProfileError,
-    selectProfileReadonly
+    selectProfileError
 } from './model/slice/profileSlice'
 
 export {

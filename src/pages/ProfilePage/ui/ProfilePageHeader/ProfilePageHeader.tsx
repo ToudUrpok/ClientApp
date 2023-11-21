@@ -3,30 +3,32 @@ import cls from './ProfilePageHeader.module.scss'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
-import { useCallback } from 'react'
-import { useAppDispatch } from 'app/hooks/redux'
-import { profileActions } from 'entities/Profile'
 
 interface ProfilePageHeaderProps {
     className?: string
-    readonly?: boolean
+    readonly: boolean
+    onEdit: () => void
+    isSaveEnabled: boolean
+    onSave: () => void
+    onCancel: () => void
 }
 
-export const ProfilePageHeader = ({ className, readonly }: ProfilePageHeaderProps) => {
+export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
+    const {
+        className,
+        readonly,
+        onEdit,
+        isSaveEnabled,
+        onSave,
+        onCancel
+    } = props
     const { t } = useTranslation('profile')
-    const dispatch = useAppDispatch()
 
-    const onEdit = useCallback(() => {
-        dispatch(profileActions.setReadonly(false))
-    }, [dispatch])
-
-    const onCancel = useCallback(() => {
-        dispatch(profileActions.setReadonly(true))
-    }, [dispatch])
-
-    const onSave = useCallback(() => {
-        dispatch(profileActions.setReadonly(true))
-    }, [dispatch])
+    const handleSaveClick = () => {
+        if (isSaveEnabled) {
+            onSave()
+        }
+    }
 
     return (
         <div className={cn(cls.ProfilePageHeader, {}, [className])}>
@@ -57,7 +59,8 @@ export const ProfilePageHeader = ({ className, readonly }: ProfilePageHeaderProp
                         <Button
                             className={cls.Btn}
                             theme={ButtonTheme.OUTLINED}
-                            onClick={onSave}
+                            disabled={!isSaveEnabled}
+                            onClick={handleSaveClick}
                         >
                             {t('profile.Save')}
                         </Button>

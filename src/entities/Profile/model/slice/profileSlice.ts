@@ -7,23 +7,18 @@ export interface ProfileState {
     profileData?: IProfile
     isLoading: boolean
     error?: string
-    readonly: boolean
 }
 
 const initialState: ProfileState = {
     profileData: undefined,
     isLoading: false,
-    error: undefined,
-    readonly: true
+    error: undefined
 }
 
 const profileSlice = createSlice({
     name: 'profile',
     initialState,
     reducers: {
-        setReadonly: (state, action: PayloadAction<boolean>) => {
-            state.readonly = action.payload
-        },
         updateProfile: (state, action: PayloadAction<IProfile>) => {
             state.profileData = {
                 ...state.profileData,
@@ -51,6 +46,5 @@ export const selectProfileState = (state: StateSchema): ProfileState | undefined
 export const selectProfileIsLoading = (state: StateSchema): boolean => state?.profile?.isLoading || false
 export const selectProfileError = (state: StateSchema): string => state?.profile?.error || ''
 export const selectProfileData = (state: StateSchema): IProfile | undefined => state.profile?.profileData
-export const selectProfileReadonly = (state: StateSchema): boolean => state?.profile?.readonly || false
 
 export const { reducer, actions } = profileSlice

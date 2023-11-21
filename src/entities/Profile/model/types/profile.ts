@@ -8,3 +8,8 @@ export interface IProfile {
     currency?: string
     avatar?: string
 }
+
+export interface ProfileForm {
+    firstname: string | undefined
+    lastname: string | undefined
+}
