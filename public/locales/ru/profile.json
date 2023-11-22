@@ -8,6 +8,6 @@
   "profile.Cancel": "Отменить",
   "profile.Save": "Сохранить",
   "profile.Age": "Возраст",
-  "profile.Country": "Страна",
-  "profile.AvatarLink": "Ссылка на изображение профиля"
+  "profile.AvatarLink": "Ссылка на изображение профиля",
+  "profile.City": "Город"
 }

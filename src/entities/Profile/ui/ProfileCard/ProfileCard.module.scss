@@ -20,6 +20,13 @@
     width: 300px;
 }
 
+.ProfileSelect {
+    margin-top: 15px;
+    width: 300px;
+    padding: 6px;
+    border: 1px solid var(--contrast-color);
+}
+
 .Loading,
 .Error {
     display: flex;

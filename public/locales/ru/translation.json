@@ -16,5 +16,7 @@
   "LoginError": "Ошибка авторизации",
   "Login": "Вход",
   "LogOut": "Выйти",
-  "Profile": "Профиль"
+  "Profile": "Профиль",
+  "Currency": "Валюта",
+  "Country": "Страна"
 }

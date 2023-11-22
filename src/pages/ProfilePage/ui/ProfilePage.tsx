@@ -15,6 +15,8 @@ import { memo, useCallback, useEffect, useState } from 'react'
 import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
 import { ReducersList, useDynamicReducer } from 'shared/hooks/useDynamicReducer'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
+import { Currency } from 'entities/Currency'
+import { Country } from 'entities/Country'
 
 const reducersToLoad: ReducersList = {
     profile: profileReducer
@@ -33,6 +35,8 @@ const ProfilePage = memo(() => {
         lastname: profileData?.lastname,
         age: profileData?.age,
         country: profileData?.country,
+        city: profileData?.city,
+        currency: profileData?.currency,
         avatar: profileData?.avatar
     })
 
@@ -47,6 +51,8 @@ const ProfilePage = memo(() => {
             lastname: profileData?.lastname,
             age: profileData?.age,
             country: profileData?.country,
+            city: profileData?.city,
+            currency: profileData?.currency,
             avatar: profileData?.avatar
         })
     }, [profileData])
@@ -66,6 +72,8 @@ const ProfilePage = memo(() => {
                        profileForm.lastname !== profileData?.lastname ||
                        profileForm.age !== profileData?.age ||
                        profileForm.country !== profileData?.country ||
+                       profileForm.city !== profileData?.city ||
+                       profileForm.currency !== profileData?.currency ||
                        profileForm.avatar !== profileData?.avatar
         return edited
     }, [profileData, profileForm])
@@ -78,6 +86,8 @@ const ProfilePage = memo(() => {
                 lastname: profileForm.lastname,
                 age: profileForm.age,
                 country: profileForm.country,
+                city: profileForm.city,
+                currency: profileForm.currency,
                 avatar: profileForm.avatar
             }))
         }
@@ -100,8 +110,16 @@ const ProfilePage = memo(() => {
         setProfileForm({ ...profileForm, age: Number(value) })
     }, [profileForm])
 
-    const onChangeCountry = useCallback((value?: string) => {
+    const onChangeCountry = useCallback((value?: Country) => {
         setProfileForm({ ...profileForm, country: value })
+    }, [profileForm])
+
+    const onChangeCity = useCallback((value?: string) => {
+        setProfileForm({ ...profileForm, city: value })
+    }, [profileForm])
+
+    const onChangeCurrency = useCallback((value?: Currency) => {
+        setProfileForm({ ...profileForm, currency: value })
     }, [profileForm])
 
     const onChangeAvatar = useCallback((value?: string) => {
@@ -126,6 +144,8 @@ const ProfilePage = memo(() => {
                 onChangeLastname={onChangeLastname}
                 onChangeAge={onChangeAge}
                 onChangeCountry={onChangeCountry}
+                onChangeCity={onChangeCity}
+                onChangeCurrency={onChangeCurrency}
                 onChangeAvatar={onChangeAvatar}
             />
         </div>

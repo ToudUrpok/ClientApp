@@ -1,0 +1,21 @@
+.Wrapper {
+    display: flex;
+}
+
+.Label {
+    margin-right: 10px;
+    color: var(--secondary-color);
+    opacity: 0.7;
+}
+
+.Select {
+    background: none;
+    outline: none;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+option {
+    color: var(--contrast-color);
+    background-color: var(--bg-color-inverted);
+}

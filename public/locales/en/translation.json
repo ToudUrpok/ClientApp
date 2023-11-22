@@ -16,5 +16,7 @@
   "LoginError": "Login Error",
   "Login": "Login",
   "LogOut": "Log Out",
-  "Profile": "Profile"
+  "Profile": "Profile",
+  "Currency": "Currency",
+  "Country": "Country"
 }

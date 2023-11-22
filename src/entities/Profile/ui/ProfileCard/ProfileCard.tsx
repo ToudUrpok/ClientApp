@@ -7,6 +7,8 @@ import { IProfile, ProfileForm } from '../../model/types/profile'
 import { Loader } from 'shared/ui/Loader/Loader'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { useMemo } from 'react'
+import { Currency, CurrencySelect } from 'entities/Currency'
+import { Country, CountrySelect } from 'entities/Country'
 
 interface ProfileCardProps {
     className?: string
@@ -18,7 +20,9 @@ interface ProfileCardProps {
     onChangeFirstname?: (value?: string) => void
     onChangeLastname?: (value?: string) => void
     onChangeAge?: (value?: string) => void
-    onChangeCountry?: (value?: string) => void
+    onChangeCountry?: (value?: Country) => void
+    onChangeCity?: (value?: string) => void
+    onChangeCurrency?: (value?: Currency) => void
     onChangeAvatar?: (value?: string) => void
 }
 
@@ -34,6 +38,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeLastname = () => {},
         onChangeAge = () => {},
         onChangeCountry = () => {},
+        onChangeCity = () => {},
+        onChangeCurrency = () => {},
         onChangeAvatar = () => {}
     } = props
 
@@ -103,12 +109,24 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     className={cls.inputField}
                     readOnly={readonly}
                 />
-                <Input
-                    value={readonly ? profileData?.country ?? '' : profileForm?.country ?? ''}
-                    placeholder={t('profile.Country')}
+                <CountrySelect
+                    className={cls.ProfileSelect}
+                    selectedCountry={readonly ? profileData?.country : profileForm?.country}
                     onChange={onChangeCountry}
+                    disabled={readonly}
+                />
+                <Input
+                    value={readonly ? profileData?.city ?? '' : profileForm?.city ?? ''}
+                    placeholder={t('profile.City')}
+                    onChange={onChangeCity}
                     className={cls.inputField}
                     readOnly={readonly}
+                />
+                <CurrencySelect
+                    className={cls.ProfileSelect}
+                    selectedCurrency={readonly ? profileData?.currency : profileForm?.currency}
+                    onChange={onChangeCurrency}
+                    disabled={readonly}
                 />
                 <Input
                     value={readonly ? profileData?.avatar ?? '' : profileForm?.avatar ?? ''}
