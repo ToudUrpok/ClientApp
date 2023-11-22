@@ -3,6 +3,10 @@ export type {
     ProfileForm
 } from './model/types/profile'
 
+export {
+    ProfileValidationError
+} from './model/types/profile'
+
 export type {
     ProfileState
 } from './model/slice/profileSlice'
@@ -22,6 +26,10 @@ export {
 export {
     updateProfileData
 } from './model/services/updateProfileData'
+
+export {
+    validateProfileData
+} from './model/services/validateProfileData'
 
 export {
     ProfileCard

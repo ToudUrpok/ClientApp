@@ -9,5 +9,10 @@
   "profile.Save": "Сохранить",
   "profile.Age": "Возраст",
   "profile.AvatarLink": "Ссылка на изображение профиля",
-  "profile.City": "Город"
+  "profile.City": "Город",
+  "profile.ValidationErrorEmptyFirstname": "Поле 'Имя' является обязательным и не может быть пустым.",
+  "profile.ValidationErrorEmptyLastname": "Поле 'Фамилия' является обязательным и не может быть пустым.",
+  "profile.ValidationErrorEmptyAge": "Поле 'Возраст' является обязательным и не может быть пустым.",
+  "profile.ValidationErrorEmptyCountry": "Поле 'Страна' является обязательным и не может быть пустым.",
+  "profile.ValidationErrorInvalidAge": "Значение поля 'Возраст' должно быть целым неотрицательным числом."
 }
