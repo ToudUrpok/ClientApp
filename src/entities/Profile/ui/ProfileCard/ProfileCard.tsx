@@ -3,61 +3,34 @@ import cls from './ProfileCard.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
-import { IProfile, ProfileForm } from '../../model/types/profile'
+import { IProfile } from '../../model/types/profile'
 import { Loader } from 'shared/ui/Loader/Loader'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { useMemo } from 'react'
-import { Currency, CurrencySelect } from 'entities/Currency'
-import { Country, CountrySelect } from 'entities/Country'
+import { CurrencySelect } from 'entities/Currency'
+import { CountrySelect } from 'entities/Country'
+import { generateAvatarAlt } from '../../model/helpers/avatarHelper'
 
 interface ProfileCardProps {
     className?: string
     profileData?: IProfile | undefined
-    profileForm?: ProfileForm
     isLoading?: boolean
     error?: string
-    readonly?: boolean
-    onChangeFirstname?: (value?: string) => void
-    onChangeLastname?: (value?: string) => void
-    onChangeAge?: (value?: string) => void
-    onChangeCountry?: (value?: Country) => void
-    onChangeCity?: (value?: string) => void
-    onChangeCurrency?: (value?: Currency) => void
-    onChangeAvatar?: (value?: string) => void
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
     const {
         className,
         profileData,
-        profileForm,
         isLoading,
-        error,
-        readonly,
-        onChangeFirstname = () => {},
-        onChangeLastname = () => {},
-        onChangeAge = () => {},
-        onChangeCountry = () => {},
-        onChangeCity = () => {},
-        onChangeCurrency = () => {},
-        onChangeAvatar = () => {}
+        error
     } = props
 
     const { t } = useTranslation('profile')
 
-    const getAlt = useMemo((): string => {
-        let alt = ':)'
-        if (readonly) {
-            if (profileData?.firstname && profileData?.lastname) {
-                alt = `${profileData?.firstname[0].toUpperCase()}${profileData?.lastname[0].toUpperCase()}`
-            }
-        } else {
-            if (profileForm?.firstname && profileForm?.lastname) {
-                alt = `${profileForm?.firstname[0].toUpperCase()}${profileForm?.lastname[0].toUpperCase()}`
-            }
-        }
-        return alt
-    }, [readonly, profileData?.firstname, profileData?.lastname, profileForm?.firstname, profileForm?.lastname])
+    const altValue = useMemo((): string => {
+        return generateAvatarAlt(profileData?.firstname, profileData?.lastname)
+    }, [profileData?.firstname, profileData?.lastname])
 
     if (isLoading) {
         return (
@@ -83,57 +56,50 @@ export const ProfileCard = (props: ProfileCardProps) => {
         <div className={cn(cls.ProfileCard, {}, [className])}>
             <div className={cls.data} >
                 <Avatar
-                    src={readonly ? profileData?.avatar : profileForm?.avatar}
-                    alt={getAlt}
+                    src={profileData?.avatar}
+                    alt={altValue}
                     size={150}
                 />
                 <Input
-                    value={readonly ? profileData?.firstname ?? '' : profileForm?.firstname ?? ''}
+                    value={profileData?.firstname ?? ''}
                     placeholder={t('profile.FirstName')}
-                    onChange={onChangeFirstname}
                     className={cls.inputField}
-                    readOnly={readonly}
+                    readOnly={true}
                 />
                 <Input
-                    value={readonly ? profileData?.lastname ?? '' : profileForm?.lastname ?? ''}
+                    value={profileData?.lastname ?? ''}
                     placeholder={t('profile.LastName')}
-                    onChange={onChangeLastname}
                     className={cls.inputField}
-                    readOnly={readonly}
+                    readOnly={true}
                 />
                 <Input
-                    value={readonly ? profileData?.age ?? '' : profileForm?.age ?? ''}
+                    value={profileData?.age ?? ''}
                     placeholder={t('profile.Age')}
                     type='number'
-                    onChange={onChangeAge}
                     className={cls.inputField}
-                    readOnly={readonly}
+                    readOnly={true}
                 />
                 <CountrySelect
                     className={cls.ProfileSelect}
-                    selectedCountry={readonly ? profileData?.country : profileForm?.country}
-                    onChange={onChangeCountry}
-                    disabled={readonly}
+                    value={profileData?.country}
+                    disabled={true}
                 />
                 <Input
-                    value={readonly ? profileData?.city ?? '' : profileForm?.city ?? ''}
+                    value={profileData?.city ?? ''}
                     placeholder={t('profile.City')}
-                    onChange={onChangeCity}
                     className={cls.inputField}
-                    readOnly={readonly}
+                    readOnly={true}
                 />
                 <CurrencySelect
                     className={cls.ProfileSelect}
-                    selectedCurrency={readonly ? profileData?.currency : profileForm?.currency}
-                    onChange={onChangeCurrency}
-                    disabled={readonly}
+                    value={profileData?.currency}
+                    disabled={true}
                 />
                 <Input
-                    value={readonly ? profileData?.avatar ?? '' : profileForm?.avatar ?? ''}
+                    value={profileData?.avatar ?? ''}
                     placeholder={t('profile.AvatarLink')}
-                    onChange={onChangeAvatar}
                     className={cls.inputField}
-                    readOnly={readonly}
+                    readOnly={true}
                 />
             </div>
         </div>

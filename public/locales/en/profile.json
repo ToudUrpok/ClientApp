@@ -10,9 +10,6 @@
   "profile.Age": "Age",
   "profile.AvatarLink": "Profile Image link",
   "profile.City": "City",
-  "profile.ValidationErrorEmptyFirstname": "'Firstname' field is required and can NOT be empty. ",
-  "profile.ValidationErrorEmptyLastname": "'Lastname' field is required and can NOT be empty.",
-  "profile.ValidationErrorEmptyAge": "'Age' field is required and can NOT be empty.",
-  "profile.ValidationErrorEmptyCountry": "'Country' field is required and can NOT be empty.",
-  "profile.ValidationErrorInvalidAge": "The value of the 'Age' field must be an integer non-negative number."
+  "profile.ValidationErrorRequired": "'{{fieldName}}' field is required and can NOT be empty. ",
+  "profile.ValidationErrorInvalidRangedInteger": "The value of the '{{fieldName}}' field must be an integer number from {{min}} to {{max}}."
 }

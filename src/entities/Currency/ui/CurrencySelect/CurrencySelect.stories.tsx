@@ -34,6 +34,6 @@ export const Disabled: Story = {
 
 export const WithSelected: Story = {
     args: {
-        selectedCurrency: Currency.usd
+        value: Currency.usd
     }
 }

@@ -1,10 +1,5 @@
 export type {
-    IProfile,
-    ProfileForm
-} from './model/types/profile'
-
-export {
-    ProfileValidationError
+    IProfile
 } from './model/types/profile'
 
 export type {
@@ -28,9 +23,13 @@ export {
 } from './model/services/updateProfileData'
 
 export {
-    validateProfileData
-} from './model/services/validateProfileData'
+    generateAvatarAlt
+} from './model/helpers/avatarHelper'
 
 export {
     ProfileCard
 } from './ui/ProfileCard/ProfileCard'
+
+export {
+    EditableProfileCard
+} from './ui/EditableProfileCard/EditableProfileCard'

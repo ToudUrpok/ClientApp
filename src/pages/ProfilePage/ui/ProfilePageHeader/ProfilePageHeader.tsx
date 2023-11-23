@@ -6,19 +6,15 @@ import { useTranslation } from 'react-i18next'
 
 interface ProfilePageHeaderProps {
     className?: string
-    readonly: boolean
+    editMode: boolean
     onEdit: () => void
-    onSave: () => void
-    onCancel: () => void
 }
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     const {
         className,
-        readonly,
-        onEdit,
-        onSave,
-        onCancel
+        editMode,
+        onEdit
     } = props
     const { t } = useTranslation('profile')
 
@@ -27,37 +23,15 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
             <Text
                 title={t('profile.Profile')}
             />
-            {readonly
-                ? (
-                    <Button
-                        className={cls.Btn}
-                        theme={ButtonTheme.OUTLINED}
-                        onClick={onEdit}
-                    >
-                        {t('profile.Edit')}
-                    </Button>
-                )
-                : (
-                    <div
-                        className={cls.EditBtns}
-                    >
-                        <Button
-                            className={cls.Btn}
-                            theme={ButtonTheme.OUTLINED}
-                            onClick={onCancel}
-                        >
-                            {t('profile.Cancel')}
-                        </Button>
-                        <Button
-                            className={cls.Btn}
-                            theme={ButtonTheme.OUTLINED}
-                            onClick={onSave}
-                        >
-                            {t('profile.Save')}
-                        </Button>
-                    </div>
-                )
-            }
+            {!editMode && (
+                <Button
+                    className={cls.Btn}
+                    theme={ButtonTheme.OUTLINED}
+                    onClick={onEdit}
+                >
+                    {t('profile.Edit')}
+                </Button>
+            )}
         </div>
     )
 }

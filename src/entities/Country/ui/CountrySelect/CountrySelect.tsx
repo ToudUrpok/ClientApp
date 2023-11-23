@@ -5,7 +5,7 @@ import { memo } from 'react'
 
 interface CountrySelectProps {
     className?: string
-    selectedCountry?: Country
+    value?: Country
     onChange?: (value: Country) => void
     disabled?: boolean
 }
@@ -23,7 +23,7 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
 
     const {
         className,
-        selectedCountry,
+        value,
         onChange = () => {},
         disabled
     } = props
@@ -36,7 +36,7 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
         <Select
             className={className}
             options={currencies}
-            selectedValue={selectedCountry}
+            value={value}
             label={t('Country')}
             onChange={onChangeHandler}
             disabled={disabled}

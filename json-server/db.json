@@ -33,9 +33,9 @@
     "profiles": [
         {
             "user_id": "1",
-            "firstname": "Евгений",
+            "firstname": "Женя",
             "lastname": "Якубович",
-            "age": 23,
+            "age": "23",
             "country": "Беларусь",
             "city": "Минск",
             "currency": "BYN",

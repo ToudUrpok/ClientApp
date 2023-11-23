@@ -51,7 +51,7 @@ export const Disabled: Story = {
 
 export const WithSelected: Story = {
     args: {
-        selectedValue: 'ussr'
+        value: 'ussr'
     }
 }
 

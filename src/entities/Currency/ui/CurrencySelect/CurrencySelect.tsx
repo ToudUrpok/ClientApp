@@ -5,7 +5,7 @@ import { memo } from 'react'
 
 interface CurrencySelectProps {
     className?: string
-    selectedCurrency?: Currency
+    value?: Currency
     onChange?: (value: Currency) => void
     disabled?: boolean
 }
@@ -22,7 +22,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
 
     const {
         className,
-        selectedCurrency,
+        value,
         onChange = () => {},
         disabled
     } = props
@@ -35,7 +35,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
         <Select
             className={className}
             options={currencies}
-            selectedValue={selectedCurrency}
+            value={value}
             label={t('Currency')}
             onChange={onChangeHandler}
             disabled={disabled}

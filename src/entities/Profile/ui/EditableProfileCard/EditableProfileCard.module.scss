@@ -1,0 +1,44 @@
+.EditableProfileCard {
+    width: 600px;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--contrast-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Avatar {
+    margin-top: 5px;
+}
+
+.Form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.InputField {
+    margin-top: 15px;
+    width: 300px;
+}
+
+.ProfileSelect {
+    margin-top: 15px;
+    width: 300px;
+    padding: 6px;
+    border: 1px solid var(--contrast-color);
+}
+
+.Btn {
+    width: 120px;
+}
+
+.EditBtns {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+}
