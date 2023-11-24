@@ -31,8 +31,10 @@ const ProfilePage = () => {
     const [editMode, setEditMode] = useState<boolean>(false)
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem(USER_AUTH_TOKEN) ?? '') as IUser
-        dispatch(fetchProfileData(user.id))
+        if (__PROJECT__ !== 'storybook') {
+            const user = JSON.parse(localStorage.getItem(USER_AUTH_TOKEN) ?? '') as IUser
+            dispatch(fetchProfileData(user.id))
+        }
     }, [dispatch])
 
     const isEdited = useCallback((editedProfile: IProfile): boolean => {
@@ -48,7 +50,9 @@ const ProfilePage = () => {
 
     const onUpdateProfileData = useCallback(async (editedProfile: IProfile) => {
         if (isEdited(editedProfile)) {
-            await dispatch(updateProfileData(editedProfile))
+            if (__PROJECT__ !== 'storybook') {
+                await dispatch(updateProfileData(editedProfile))
+            }
         }
 
         setEditMode(false)

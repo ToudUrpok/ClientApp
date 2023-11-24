@@ -8,7 +8,8 @@ import path from 'path'
 export default {
     globals: {
         __IS_DEV__: true,
-        __API_BASE_URL__: ''
+        __API_BASE_URL__: '',
+        __PROJECT__: 'jest'
     },
     // All imported modules in your tests should be mocked automatically
     // automock: false,
