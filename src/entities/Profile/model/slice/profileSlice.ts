@@ -6,7 +6,7 @@ import { updateProfileData } from '../services/updateProfileData'
 
 export interface ProfileState {
     profileData?: IProfile
-    isLoading: boolean
+    isLoading?: boolean
     error?: string
 }
 
