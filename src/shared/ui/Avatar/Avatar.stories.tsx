@@ -2,12 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { Avatar } from './Avatar'
-import AvatarImg from './gorilla.jpg'
 
 const meta: Meta<typeof Avatar> = {
     component: Avatar,
     args: {
-        src: AvatarImg,
         size: 250
     }
 }
@@ -17,12 +15,13 @@ type Story = StoryObj<typeof Avatar>
 
 export const WithImg: Story = {
     args: {
+        src: 'https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg'
     }
 }
 
 export const AltLight: Story = {
     args: {
-        src: 'h',
+        src: undefined,
         alt: 'VL'
     },
     decorators: [
@@ -32,7 +31,7 @@ export const AltLight: Story = {
 
 export const AltDark: Story = {
     args: {
-        src: 'h',
+        src: undefined,
         alt: 'VL'
     },
     decorators: [
