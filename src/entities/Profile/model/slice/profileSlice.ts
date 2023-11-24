@@ -50,8 +50,8 @@ const profileSlice = createSlice({
 })
 
 export const selectProfileState = (state: StateSchema): ProfileState | undefined => state.profile
-export const selectProfileIsLoading = (state: StateSchema): boolean => state?.profile?.isLoading || false
-export const selectProfileError = (state: StateSchema): string => state?.profile?.error || ''
+export const selectProfileIsLoading = (state: StateSchema): boolean => state?.profile?.isLoading ?? false
+export const selectProfileError = (state: StateSchema): string => state?.profile?.error ?? ''
 export const selectProfileData = (state: StateSchema): IProfile | undefined => state.profile?.profileData
 
 export const { reducer, actions } = profileSlice
