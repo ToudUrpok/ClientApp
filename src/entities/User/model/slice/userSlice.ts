@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { StateSchema } from 'app/store/StateSchema'
+import { StateSchema } from '../../../../app/store/StateSchema'
 import { IUser } from '../types/user'
-import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
+import { USER_AUTH_TOKEN } from '../../../../shared/const/localStorage'
 
 export interface UserState {
     authData?: IUser

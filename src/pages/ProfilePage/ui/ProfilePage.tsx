@@ -1,5 +1,5 @@
 import cls from './ProfilePage.module.scss'
-import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks/redux'
 import {
     IProfile,
     ProfileCard,
@@ -10,11 +10,11 @@ import {
     selectProfileError,
     selectProfileIsLoading,
     updateProfileData
-} from 'entities/Profile'
-import { IUser } from 'entities/User'
+} from '../../../entities/Profile'
+import { IUser } from '../../../entities/User'
 import { memo, useCallback, useEffect, useState } from 'react'
-import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
-import { ReducersList, useDynamicReducer } from 'shared/hooks/useDynamicReducer'
+import { USER_AUTH_TOKEN } from '../../../shared/const/localStorage'
+import { ReducersList, useDynamicReducer } from '../../../shared/hooks/useDynamicReducer'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 
 const reducersToLoad: ReducersList = {

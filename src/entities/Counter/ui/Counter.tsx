@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks/redux'
 import { selectCounterValue } from '../model/counterSlice'
 import { counterActions } from '..'
-import { Button } from 'shared/ui/Button/Button'
+import { Button } from '../../../shared/ui/Button/Button'
 
 export const Counter = () => {
     const dispatch = useAppDispatch()

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { StateSchema } from 'app/store/StateSchema'
+import { StateSchema } from '../../../../app/store/StateSchema'
 import { IProfile } from '../types/profile'
 import { fetchProfileData } from '../services/fetchProfileData'
 import { updateProfileData } from '../services/updateProfileData'

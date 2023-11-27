@@ -4,8 +4,8 @@ import {
     ReducersMapObject,
     configureStore
 } from '@reduxjs/toolkit'
-import { counterReducer } from 'entities/Counter'
-import { userReducer } from 'entities/User'
+import { counterReducer } from '../../entities/Counter'
+import { userReducer } from '../../entities/User'
 import { createReducerManager } from './reducerManager'
 import { StateSchema } from './StateSchema'
 

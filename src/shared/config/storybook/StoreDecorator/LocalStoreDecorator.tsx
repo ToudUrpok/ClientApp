@@ -1,9 +1,9 @@
 import { Story } from '@storybook/react'
-import { StoreProvider } from 'app/providers/StoreProvider'
-import { StateSchema } from 'app/store/StateSchema'
-import { profileReducer } from 'entities/Profile'
-import { loginReducer } from 'features/AuthByUsername'
-import { ReducersList } from 'shared/hooks/useDynamicReducer'
+import { StoreProvider } from '../../../../app/providers/StoreProvider'
+import { StateSchema } from '../../../../app/store/StateSchema'
+import { profileReducer } from '../../../../entities/Profile'
+import { loginReducer } from '../../../../features/AuthByUsername'
+import { ReducersList } from '../../../../shared/hooks/useDynamicReducer'
 import {
     DeepPartial,
     PreloadedState

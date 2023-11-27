@@ -1,5 +1,5 @@
 import { AsyncThunkAction } from '@reduxjs/toolkit'
-import { AppDispatch, StateSchema } from 'app/store/StateSchema'
+import { AppDispatch, StateSchema } from '../../../../app/store/StateSchema'
 
 export class AsyncThunkTester<Returned, ThunkArg, RejectedValue> {
     dispatch: AppDispatch

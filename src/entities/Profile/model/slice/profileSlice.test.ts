@@ -1,5 +1,5 @@
 import { DeepPartial } from '@reduxjs/toolkit'
-import { StateSchema } from 'app/store/StateSchema'
+import { StateSchema } from '../../../../app/store/StateSchema'
 import {
     reducer as profileReducer,
     ProfileState,
@@ -8,8 +8,8 @@ import {
     selectProfileIsLoading,
     selectProfileState
 } from './profileSlice'
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
+import { Country } from '../../../../entities/Country'
+import { Currency } from '../../../../entities/Currency'
 import { IProfile } from '../types/profile'
 import { updateProfileData } from '../services/updateProfileData'
 

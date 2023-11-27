@@ -1,4 +1,4 @@
-import { ThrowErrorButton } from 'app/providers/ErrorBoundary'
+import { ThrowErrorButton } from '../../../app/providers/ErrorBoundary'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 

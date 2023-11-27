@@ -1,4 +1,4 @@
-import { cn } from 'shared/lib/classNames/classNames'
+import { cn } from '../../../shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
 import { MouseEvent, ReactNode, useCallback, useEffect } from 'react'
 import { Portal } from '../Portal/Portal'

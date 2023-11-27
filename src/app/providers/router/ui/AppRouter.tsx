@@ -1,9 +1,9 @@
-import { useAppSelector } from 'app/hooks/redux'
-import { selectUserAuthData } from 'entities/User'
+import { useAppSelector } from '../../../../app/hooks/redux'
+import { selectUserAuthData } from '../../../../entities/User'
 import { Suspense, memo, useMemo } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { routeConfig } from 'shared/config/routeConfig/routeConfig'
-import { PageLoader } from 'widgets/PageLoader'
+import { routeConfig } from '../../../../shared/config/routeConfig/routeConfig'
+import { PageLoader } from '../../../../widgets/PageLoader'
 
 const AppRouter = () => {
     const authData = useAppSelector(selectUserAuthData)

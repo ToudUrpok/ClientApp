@@ -1,5 +1,5 @@
 import { DeepPartial } from '@reduxjs/toolkit'
-import { StateSchema } from 'app/store/StateSchema'
+import { StateSchema } from '../../../app/store/StateSchema'
 import { CounterState, actions, reducer, selectCounterValue } from './counterSlice'
 
 describe('counterSlice', () => {

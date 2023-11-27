@@ -1,9 +1,9 @@
-import { AsyncThunkTester } from 'shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
+import { AsyncThunkTester } from '../../../../shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
 import { fetchProfileData } from './fetchProfileData'
 import { IProfile } from '../types/profile'
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
-import { $authAPI } from 'shared/api/authorizedAPIInstance'
+import { Country } from '../../../../entities/Country'
+import { Currency } from '../../../../entities/Currency'
+import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
 import { updateProfileData } from './updateProfileData'
 
 jest.mock('shared/api/authorizedAPIInstance')

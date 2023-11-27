@@ -1,7 +1,7 @@
 import { loginByUsername } from './loginByUsername'
-import { userActions } from 'entities/User'
-import { AsyncThunkTester } from 'shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
-import { $API } from 'shared/api/APIInstance'
+import { userActions } from '../../../../entities/User'
+import { AsyncThunkTester } from '../../../../shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
+import { $API } from '../../../../shared/api/APIInstance'
 
 jest.mock('shared/api/APIInstance')
 const mockedAxiosPost = jest.mocked($API.post)
