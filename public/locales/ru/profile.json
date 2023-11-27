@@ -9,5 +9,7 @@
   "profile.Save": "Сохранить",
   "profile.Age": "Возраст",
   "profile.AvatarLink": "Ссылка на изображение профиля",
-  "profile.City": "Город"
+  "profile.City": "Город",
+  "profile.ValidationErrorRequired": "Поле '{{fieldName}}' является обязательным и не может быть пустым.",
+  "profile.ValidationErrorInvalidRangedInteger": "Значение поля '{{fieldName}}' должно быть целым числом в диапазоне от {{min}} до {{max}}."
 }

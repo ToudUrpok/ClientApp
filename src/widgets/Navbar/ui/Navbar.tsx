@@ -1,11 +1,11 @@
-import { cn } from 'shared/lib/classNames/classNames'
+import { cn } from '../../../shared/lib/classNames/classNames'
 import cls from './Navbar.module.scss'
 import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
-import { LoginModal } from 'features/AuthByUsername'
-import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
-import { selectUserAuthData, userActions } from 'entities/User'
+import { Button, ButtonTheme } from '../../../shared/ui/Button/Button'
+import { LoginModal } from '../../../features/AuthByUsername'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks/redux'
+import { selectUserAuthData, userActions } from '../../../entities/User'
 
 interface NavbarProps {
     className?: string

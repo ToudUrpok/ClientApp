@@ -1,10 +1,10 @@
-import { cn } from 'shared/lib/classNames/classNames'
+import { cn } from '../shared/lib/classNames/classNames'
 import { AppRouter } from './providers/router'
-import { Navbar } from 'widgets/Navbar'
-import { Sidebar } from 'widgets/Sidebar'
+import { Navbar } from '../widgets/Navbar'
+import { Sidebar } from '../widgets/Sidebar'
 import { Suspense, useEffect } from 'react'
 import { useAppDispatch } from './hooks/redux'
-import { userActions } from 'entities/User'
+import { userActions } from '../entities/User'
 
 const App = () => {
     const dispatch = useAppDispatch()

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { CurrencySelect } from './CurrencySelect'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '../../../../app/providers/ThemeProvider'
 import { Currency } from '../../model/types/currency'
 
 const meta: Meta<typeof CurrencySelect> = {
@@ -34,6 +34,6 @@ export const Disabled: Story = {
 
 export const WithSelected: Story = {
     args: {
-        selectedCurrency: Currency.usd
+        value: Currency.usd
     }
 }

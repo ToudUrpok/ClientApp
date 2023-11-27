@@ -34,8 +34,8 @@
         {
             "user_id": "1",
             "firstname": "Женя",
-            "lastname": "",
-            "age": 23,
+            "lastname": "Якубович",
+            "age": "23",
             "country": "Беларусь",
             "city": "Минск",
             "currency": "BYN",

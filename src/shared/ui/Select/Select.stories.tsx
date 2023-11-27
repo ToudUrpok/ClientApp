@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Select } from './Select'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import { ThemeDecorator } from '../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '../../../app/providers/ThemeProvider'
 
 const meta: Meta<typeof Select> = {
     component: Select,
@@ -51,7 +51,7 @@ export const Disabled: Story = {
 
 export const WithSelected: Story = {
     args: {
-        selectedValue: 'ussr'
+        value: 'ussr'
     }
 }
 

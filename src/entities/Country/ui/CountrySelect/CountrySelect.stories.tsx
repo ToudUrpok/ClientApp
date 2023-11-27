@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { CountrySelect } from './CountrySelect'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '../../../../app/providers/ThemeProvider'
 import { Country } from '../../model/types/country'
 
 const meta: Meta<typeof CountrySelect> = {
@@ -34,6 +34,6 @@ export const Disabled: Story = {
 
 export const WithSelected: Story = {
     args: {
-        selectedCountry: Country.USA
+        value: Country.USA
     }
 }

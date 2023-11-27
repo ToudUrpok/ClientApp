@@ -21,7 +21,8 @@ export default (env: BuildEnv): Configuration => {
         paths,
         isDev,
         port,
-        APIBaseURL
+        APIBaseURL,
+        project: 'app'
     })
 
     return config

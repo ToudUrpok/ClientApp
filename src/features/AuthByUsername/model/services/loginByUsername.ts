@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { IUser, userActions } from 'entities/User'
-import { $API } from 'shared/api/APIInstance'
-import { USER_AUTH_TOKEN } from 'shared/const/localStorage'
+import { IUser, userActions } from '../../../../entities/User'
+import { $API } from '../../../../shared/api/APIInstance'
+import { USER_AUTH_TOKEN } from '../../../../shared/const/localStorage'
 
 interface LoginByUsernameProps {
     username: string

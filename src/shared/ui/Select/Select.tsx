@@ -1,4 +1,4 @@
-import { cn } from 'shared/lib/classNames/classNames'
+import { cn } from '../../../shared/lib/classNames/classNames'
 import cls from './Select.module.scss'
 import { ChangeEvent, memo, useMemo } from 'react'
 
@@ -9,7 +9,7 @@ export interface SelectOption {
 
 interface SelectProps {
     options: SelectOption[]
-    selectedValue?: string
+    value?: string
     onChange?: (value: string) => void
     className?: string
     label?: string
@@ -19,7 +19,7 @@ interface SelectProps {
 export const Select = memo((props: SelectProps) => {
     const {
         options,
-        selectedValue,
+        value,
         onChange,
         className,
         label,
@@ -50,7 +50,7 @@ export const Select = memo((props: SelectProps) => {
             )}
             <select
                 className={cls.Select}
-                value={selectedValue}
+                value={value}
                 onChange={onChangeHandler}
                 disabled={disabled}
             >

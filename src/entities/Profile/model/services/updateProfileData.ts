@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IProfile } from '../types/profile'
-import { $authAPI } from 'shared/api/authorizedAPIInstance'
+import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
 
 export const updateProfileData = createAsyncThunk<IProfile, IProfile, { rejectValue: Error }>(
     'profile/updateProfileData',

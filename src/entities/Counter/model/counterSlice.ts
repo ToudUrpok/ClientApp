@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, DeepPartial } from '@reduxjs/toolkit'
-import { StateSchema } from 'app/store/StateSchema'
+import { StateSchema } from '../../../app/store/StateSchema'
 
 export interface CounterState {
     value: number

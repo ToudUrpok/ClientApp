@@ -1,7 +1,7 @@
-import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
-import MainIcon from 'shared/assets/icons/link-main-20-20.svg'
-import AboutIcon from 'shared/assets/icons/link-about-20-20.svg'
-import ProfileIcon from 'shared/assets/icons/link-profile-17-20.svg'
+import { RoutePaths } from '../../../shared/config/routeConfig/routeConfig'
+import MainIcon from '../../../shared/assets/icons/link-main-20-20.svg'
+import AboutIcon from '../../../shared/assets/icons/link-about-20-20.svg'
+import ProfileIcon from '../../../shared/assets/icons/link-profile-17-20.svg'
 
 export interface ISidebarItem {
     Path: string

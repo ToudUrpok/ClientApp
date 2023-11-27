@@ -1,10 +1,10 @@
-import { cn } from 'shared/lib/classNames/classNames'
+import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './LoginForm.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
-import { Input } from 'shared/ui/Input/Input'
+import { Button, ButtonTheme } from '../../../../shared/ui/Button/Button'
+import { Input } from '../../../../shared/ui/Input/Input'
 import { memo, useCallback } from 'react'
-import { useAppDispatch, useAppSelector } from 'app/hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
 import {
     actions as loginActions,
     reducer as loginReducer,
@@ -14,8 +14,8 @@ import {
     selectLoginUsername
 } from '../../model/slice/loginSlice'
 import { loginByUsername } from '../../model/services/loginByUsername'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
-import { ReducersList, useDynamicReducer } from 'shared/hooks/useDynamicReducer'
+import { Text, TextTheme } from '../../../../shared/ui/Text/Text'
+import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 
 export interface LoginFormProps {
     className?: string

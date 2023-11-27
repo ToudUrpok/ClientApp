@@ -9,5 +9,7 @@
   "profile.Save": "Save",
   "profile.Age": "Age",
   "profile.AvatarLink": "Profile Image link",
-  "profile.City": "City"
+  "profile.City": "City",
+  "profile.ValidationErrorRequired": "'{{fieldName}}' field is required and can NOT be empty. ",
+  "profile.ValidationErrorInvalidRangedInteger": "The value of the '{{fieldName}}' field must be an integer number from {{min}} to {{max}}."
 }

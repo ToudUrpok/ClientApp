@@ -1,6 +1,5 @@
 export type {
-    IProfile,
-    ProfileForm
+    IProfile
 } from './model/types/profile'
 
 export type {
@@ -24,5 +23,13 @@ export {
 } from './model/services/updateProfileData'
 
 export {
+    generateAvatarAlt
+} from './model/helpers/avatarHelper'
+
+export {
     ProfileCard
 } from './ui/ProfileCard/ProfileCard'
+
+export {
+    EditableProfileCard
+} from './ui/EditableProfileCard/EditableProfileCard'

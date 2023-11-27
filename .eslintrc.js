@@ -57,11 +57,12 @@ module.exports = {
         '@typescript-eslint/consistent-indexed-object-style': 'off',
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
-            ignoreAttribute: ['to', 'data-testid']
+            ignoreAttribute: ['to', 'data-testid', 'name']
         }],
         'react/display-name': 'off',
         'react-hooks/rules-of-hooks': 'error',  //Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error',  //Checks effect dependencies
-        '@typescript-eslint/no-dynamic-delete': 'warn'
+        '@typescript-eslint/no-dynamic-delete': 'warn',
+        '@typescript-eslint/unbound-method': 'off'
     }
 }

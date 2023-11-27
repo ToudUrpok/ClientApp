@@ -1,16 +1,16 @@
-import { cn } from 'shared/lib/classNames/classNames'
+import { cn } from '../../../shared/lib/classNames/classNames'
 import cls from './Input.module.scss'
 import { ChangeEvent, InputHTMLAttributes, memo, useState } from 'react'
-import EyeOpenedIcon from 'shared/assets/icons/eye-opened.svg'
-import EyeClosedIcon from 'shared/assets/icons/eye-closed.svg'
+import EyeOpenedIcon from '../../../shared/assets/icons/eye-opened.svg'
+import EyeClosedIcon from '../../../shared/assets/icons/eye-closed.svg'
 import { Button, ButtonTheme } from '../Button/Button'
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
 
 interface InputProps extends HTMLInputProps {
     className?: string
-    value: string | number
-    onChange: (value: string) => void
+    value?: string | number
+    onChange?: (value: string) => void
     type?: string
     readOnly?: boolean
 }
