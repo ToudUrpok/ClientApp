@@ -1,3 +1,5 @@
 {
-    "article.ArticleDetailedPage": "Детализированная страница статьи"
+  "article.ArticleDetailedPage": "Детализированная страница статьи",
+  "article.ArticleNotFound": "Статья не найдена...",
+  "article.ArticleDataLoadingError": "Не получилось загрузить статью"
 }

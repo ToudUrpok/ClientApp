@@ -2,6 +2,8 @@ import { memo } from 'react'
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './ArticleDetailedPage.module.scss'
 import { useTranslation } from 'react-i18next'
+import { Article } from '../../../../entities/Article'
+import { useParams } from 'react-router-dom'
 
 interface ArticleDetailedPageProps {
     className?: string
@@ -12,10 +14,19 @@ const ArticleDetailedPage = (props: ArticleDetailedPageProps) => {
         className
     } = props
     const { t } = useTranslation('article')
+    const { id } = useParams()
+
+    if (!id) {
+        return (
+            <div className={cn(cls.ArticleDetailedPage, {}, [className])}>
+                { t('article.ArticleNotFound') }
+            </div>
+        )
+    }
 
     return (
         <div className={cn(cls.ArticleDetailedPage, {}, [className])}>
-            { t('article.ArticleDetailedPage') }
+            <Article id={id} />
         </div>
     )
 }

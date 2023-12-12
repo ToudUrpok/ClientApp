@@ -1,3 +1,5 @@
 {
-    "article.ArticleDetailedPage": "Article Detailed Page"
+  "article.ArticleDetailedPage": "Article Detailed Page",
+  "article.ArticleNotFound": "Article Not Found...",
+  "article.ArticleDataLoadingError": "Failed To Load the Article "
 }

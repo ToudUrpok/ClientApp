@@ -1,5 +1,9 @@
 .AppLink {
     margin: 0 10px;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .Primary {
