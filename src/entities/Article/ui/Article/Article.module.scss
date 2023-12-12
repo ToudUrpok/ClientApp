@@ -1,0 +1,36 @@
+.Article {
+    padding: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.AvatarWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.Avatar {
+    margin: 0 auto;
+}
+
+.Title {
+    margin-top: 20px;
+}
+
+.Skeleton {
+    margin-top: 15px;
+}
+
+.ArticleAttribte {
+    display: flex;
+    align-items: center;
+}
+
+.ArticleAttribteIcon {
+    margin: 10px;
+}
+
+.ArticleBlock {
+    margin-top: 16px;
+}
