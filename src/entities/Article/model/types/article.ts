@@ -6,7 +6,7 @@ export interface IArticle {
     views: number
     createdAt: string
     type: ArticleType[]
-    blocks: ArticleBlock[]
+    blocks: IArticleBlock[]
 }
 
 export enum ArticleType {
@@ -18,24 +18,7 @@ export enum ArticleType {
     SHOPPING = 'Shopping'
 }
 
-export type ArticleBlock = IArticleTextBlock | IArticleCodeBlock | IArticleImageBlock
-
-export interface IArticleTextBlock extends IArticleBlockBase {
-    type: ArticleBlockType.TEXT
-    content: ITextContent
-}
-
-export interface IArticleCodeBlock extends IArticleBlockBase {
-    type: ArticleBlockType.CODE
-    content: ICodeContent
-}
-
-export interface IArticleImageBlock extends IArticleBlockBase {
-    type: ArticleBlockType.IMAGE
-    content: IImageContent
-}
-
-export interface IArticleBlockBase {
+export interface IArticleBlock {
     id: string
     type: ArticleBlockType
     content: ArticleBlockContent
