@@ -148,21 +148,42 @@
     ],
     "comments": [
         {
-            "id": 1,
-            "body": "some comment",
-            "postId": 1
+          "id": "1",
+          "text": "Perfecrt article about JS!",
+          "articleId": "1",
+          "userId": "1"
+        },
+        {
+          "id": "2",
+          "text": "Good article! Thnx :)",
+          "articleId": "1",
+          "userId": "2"
+        },
+        {
+          "id": "3",
+          "text": "Hmmmm... I'd been doing smth incorrectly. THNX for usefull info!",
+          "articleId": "2",
+          "userId": "1"
+        },
+        {
+            "id": "4",
+            "text": "I love COFFEE :) Good advises, like!",
+            "articleId": "2",
+            "userId": "2"
         }
-    ],
+      ],
     "users": [
         {
             "id": "1",
             "username": "admin",
-            "password": "123"
+            "password": "123",
+            "avatar": "https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg"
         },
         {
             "id": "2",
             "username": "lead",
-            "password": "1917"
+            "password": "1917",
+            "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/800px-Vladimir_Lenin.jpg"
         }
     ],
     "profiles": [

@@ -23,10 +23,6 @@ export {
 } from './model/services/updateProfileData'
 
 export {
-    generateAvatarAlt
-} from './model/helpers/avatarHelper'
-
-export {
     ProfileCard
 } from './ui/ProfileCard/ProfileCard'
 

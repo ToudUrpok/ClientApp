@@ -1,13 +1,19 @@
 import { cn } from '../../../shared/lib/classNames/classNames'
 import './Loader.scss'
 
-interface LoaderProps {
-    className?: string
+export enum LoaderSize {
+    NONE = '',
+    S = 'size_s'
 }
 
-export const Loader = ({ className }: LoaderProps) => {
+interface LoaderProps {
+    className?: string
+    size?: LoaderSize
+}
+
+export const Loader = ({ className, size = LoaderSize.NONE }: LoaderProps) => {
     return (
-        <div className={cn('lds-facebook', {}, [className])}>
+        <div className={cn('lds-facebook', {}, [className, size])}>
             <div/>
             <div/>
             <div/>
