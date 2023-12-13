@@ -6,32 +6,38 @@ import { Article } from '../../../../entities/Article'
 import { useParams } from 'react-router-dom'
 import { Text } from '../../../../shared/ui/Text/Text'
 import { CommentsList } from '../../../../entities/Comment'
+import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
+import {
+    reducer as commentsReducer, commentsSelectors, selectCommentsIsLoading
+} from '../../model/slices/articleCommentsSlice'
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
+import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId'
 
 interface ArticleDetailedPageProps {
     className?: string
 }
 
-const comments = [
-    {
-        id: '1',
-        text: 'Perfecrt article about JS!',
-        articleId: '1',
-        user: { id: '1', username: 'Eugene', avatar: 'https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg' }
-    },
-    {
-        id: '2',
-        text: 'Good article! Thnx :)',
-        articleId: '1',
-        user: { id: '2', username: 'Mike', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/800px-Vladimir_Lenin.jpg' }
-    }
-]
+const reducersToLoad: ReducersList = {
+    articleComments: commentsReducer
+}
 
 const ArticleDetailedPage = (props: ArticleDetailedPageProps) => {
+    useDynamicReducer(reducersToLoad, true)
     const {
         className
     } = props
     const { t } = useTranslation('article')
     const { id } = useParams()
+    const dispatch = useAppDispatch()
+    const comments = useAppSelector(commentsSelectors.selectAll)
+    const isCommentsLoading = useAppSelector(selectCommentsIsLoading)
+
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchCommentsByArticleId(id))
+        }
+    })
 
     if (!id) {
         return (
@@ -45,7 +51,7 @@ const ArticleDetailedPage = (props: ArticleDetailedPageProps) => {
         <div className={cn(cls.ArticleDetailedPage, {}, [className])}>
             <Article id={id} />
             <Text className={cls.CommentsTitle} title={`${t('article.Comments')} (${comments?.length ?? 0})`} />
-            <CommentsList comments={comments} />
+            <CommentsList comments={comments} isLoading={isCommentsLoading} />
         </div>
     )
 }

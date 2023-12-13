@@ -177,12 +177,14 @@
             "id": "1",
             "username": "admin",
             "password": "123",
+            "role": "admin",
             "avatar": "https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg"
         },
         {
             "id": "2",
             "username": "lead",
             "password": "1917",
+            "role": "user",
             "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vladimir_Lenin.jpg/800px-Vladimir_Lenin.jpg"
         }
     ],

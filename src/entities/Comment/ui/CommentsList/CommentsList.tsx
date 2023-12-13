@@ -5,7 +5,7 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from '../../../../shared/ui/Text/Text'
 import { CommentCard } from '../Comment/CommentCard'
-import { Loader, LoaderSize } from '../../../../shared/ui/Loader/Loader'
+import { Loader } from '../../../../shared/ui/Loader/Loader'
 
 interface CommentsListProps {
     className?: string
@@ -25,7 +25,7 @@ export const CommentsList = memo((props: CommentsListProps) => {
     if (isLoading) {
         return (
             <div className={cls.LoaderWrapper}>
-                <Loader size={LoaderSize.S} />
+                <Loader />
             </div>
         )
     }

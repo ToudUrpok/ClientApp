@@ -5,10 +5,6 @@
     height: 80px;
 }
 
-.size_s.lds-facebook {
-    height: 40px;
-}
-
 .lds-facebook div {
     display: inline-block;
     position: absolute;
@@ -44,19 +40,4 @@
         top: 24px;
         height: 32px;
     }
-}
-
-.size_s {
-    @keyframes lds-facebook {
-        0% {
-            top: 4px;
-            height: 32px;
-        }
-        
-        50%,
-        100% {
-            top: 12px;
-            height: 16px;
-        }   
-    }  
 }

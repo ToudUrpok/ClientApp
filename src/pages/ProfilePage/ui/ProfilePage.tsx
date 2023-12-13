@@ -12,10 +12,11 @@ import {
     updateProfileData
 } from '../../../entities/Profile'
 import { IUser } from '../../../entities/User'
-import { memo, useCallback, useEffect, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { USER_AUTH_TOKEN } from '../../../shared/const/localStorage'
 import { ReducersList, useDynamicReducer } from '../../../shared/hooks/useDynamicReducer'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
+import { useInitialEffect } from '../../../shared/hooks/useInitialEffect'
 
 const reducersToLoad: ReducersList = {
     profile: profileReducer
@@ -30,12 +31,10 @@ const ProfilePage = () => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            const user = JSON.parse(localStorage.getItem(USER_AUTH_TOKEN) ?? '') as IUser
-            dispatch(fetchProfileData(user.id))
-        }
-    }, [dispatch])
+    useInitialEffect(() => {
+        const user = JSON.parse(localStorage.getItem(USER_AUTH_TOKEN) ?? '') as IUser
+        dispatch(fetchProfileData(user.id))
+    })
 
     const isEdited = useCallback((editedProfile: IProfile): boolean => {
         const edited = editedProfile.firstname !== profileData?.firstname ||
