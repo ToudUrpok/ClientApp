@@ -11,12 +11,11 @@ import {
     selectProfileIsLoading,
     updateProfileData
 } from '../../../entities/Profile'
-import { IUser } from '../../../entities/User'
 import { memo, useCallback, useState } from 'react'
-import { USER_AUTH_TOKEN } from '../../../shared/const/localStorage'
 import { ReducersList, useDynamicReducer } from '../../../shared/hooks/useDynamicReducer'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 import { useInitialEffect } from '../../../shared/hooks/useInitialEffect'
+import { selectUserAuthData } from '../../../entities/User'
 
 const reducersToLoad: ReducersList = {
     profile: profileReducer
@@ -28,12 +27,14 @@ const ProfilePage = () => {
     const isLoading = useAppSelector(selectProfileIsLoading)
     const error = useAppSelector(selectProfileError)
     const profileData = useAppSelector(selectProfileData)
+    const authData = useAppSelector(selectUserAuthData)
 
     const [editMode, setEditMode] = useState<boolean>(false)
 
     useInitialEffect(() => {
-        const user = JSON.parse(localStorage.getItem(USER_AUTH_TOKEN) ?? '') as IUser
-        dispatch(fetchProfileData(user.id))
+        if (authData?.id) {
+            dispatch(fetchProfileData(authData.id))
+        }
     })
 
     const isEdited = useCallback((editedProfile: IProfile): boolean => {

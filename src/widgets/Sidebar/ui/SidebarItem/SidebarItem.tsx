@@ -1,12 +1,12 @@
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './SidebarItem.module.scss'
 import { useTranslation } from 'react-i18next'
-import { ISidebarItem } from '../../model/items'
+import { ISidebarNavItem } from '../../model/SidebarNavItem'
 import { AppLink, AppLinkTheme } from '../../../../shared/ui/AppLink/AppLink'
 import { memo } from 'react'
 
 interface SidebarItemProps {
-    item: ISidebarItem
+    item: ISidebarNavItem
     collapsed: boolean
 }
 
