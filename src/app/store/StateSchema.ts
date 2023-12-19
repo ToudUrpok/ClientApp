@@ -11,6 +11,7 @@ import { LoginState } from '../../features/AuthByUsername'
 import { setupStore } from './store'
 import { ProfileState } from '../../entities/Profile'
 import { ArticleState } from '../../entities/Article'
+import { ArticleCommentsState } from '../../features/ArticleComments'
 
 export type AppStore = ReturnType<typeof setupStore>
 export type AppDispatch = AppStore['dispatch']
@@ -21,6 +22,7 @@ export interface StateSchema {
     login?: LoginState
     profile?: ProfileState
     article?: ArticleState
+    articleComments?: ArticleCommentsState
 }
 
 export type StateSchemaKey = keyof StateSchema

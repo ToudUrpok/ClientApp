@@ -8,7 +8,7 @@ import {
     selectArticleIsLoading
 } from '../../model/slice/articleSlice'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 import { fetchArticleById } from '../../../../entities/Article/model/services/fetchArticleById'
 import { useTranslation } from 'react-i18next'
 import { Text, TextSize, TextTheme } from '../../../../shared/ui/Text/Text'
@@ -18,6 +18,7 @@ import ViewsIcon from '../../../../shared/assets/icons/views-20-20.svg'
 import CalendorIcon from '../../../../shared/assets/icons/calendar-20-20.svg'
 import { Icon } from '../../../../shared/ui/Icon/Icon'
 import { ArticleBlock } from '../ArticleBlock/ArticleBlock'
+import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
 
 interface ArticleProps {
     className?: string
@@ -41,13 +42,11 @@ export const Article = memo((props: ArticleProps) => {
     const error = useAppSelector(selectArticleError)
     const data = useAppSelector(selectArticleData)
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            if (id) {
-                dispatch(fetchArticleById(id))
-            }
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchArticleById(id))
         }
-    }, [dispatch, id])
+    })
 
     let content
 

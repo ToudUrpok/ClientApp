@@ -1,0 +1,16 @@
+.AddCommentForm {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+    width: 50%;
+}
+
+.CommentInput {
+    flex-grow: 1;
+}
+
+.AddBtn {
+    margin-left: 15px;
+}

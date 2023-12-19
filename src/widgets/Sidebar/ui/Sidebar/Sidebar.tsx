@@ -4,10 +4,8 @@ import { memo, useMemo, useState } from 'react'
 import { ThemeSwitcher } from '../../../../shared/ui/ThemeSwitcher/ThemeSwitcher'
 import { LangSwitcher } from '../../../../shared/ui/LangSwitcher/LangSwitcher'
 import { Button, ButtonSize, ButtonTheme } from '../../../../shared/ui/Button/Button'
-import { SidebarItems } from '../../model/items'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
-import { useAppSelector } from '../../../../app/hooks/redux'
-import { selectUserAuthData } from '../../../../entities/User'
+import { useSidebarNavItems } from '../../model/useSidebarNavItems'
 
 interface SidebarProps {
     className?: string
@@ -15,20 +13,19 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false)
-    const authData = useAppSelector(selectUserAuthData)
+    const sidebarNavItems = useSidebarNavItems()
 
     const onToggle = () => {
         setCollapsed(prev => !prev)
     }
 
-    const items = useMemo(() => SidebarItems.map((item) => (
-        (!item.IsAuthRequired || (item.IsAuthRequired && authData)) &&
-             <SidebarItem
-                 key={item.Path}
-                 item={item}
-                 collapsed={collapsed}
-             />
-    )), [collapsed, authData])
+    const items = useMemo(() => sidebarNavItems.map((item) => (
+        <SidebarItem
+            key={item.Path}
+            item={item}
+            collapsed={collapsed}
+        />
+    )), [collapsed, sidebarNavItems])
 
     return (
         <div
