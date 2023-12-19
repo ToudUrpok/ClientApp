@@ -1,8 +1,10 @@
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './ArticleComments.module.scss'
 import { memo, useCallback } from 'react'
-import { Text } from '../../../../shared/ui/Text/Text'
-import { CommentsList } from '../../../../entities/Comment'
+import {
+    CommentsList,
+    AddCommentForm
+} from '../../../../entities/Comment'
 import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 import {
     reducer as commentsReducer, commentsSelectors, selectCommentsIsLoading
@@ -10,9 +12,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
 import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId'
-import { useTranslation } from 'react-i18next'
-import { AddCommentForm } from '../AddCommentForm/AddCommentForm'
-import { postComment } from 'features/ArticleComments/model/services/postComment'
+import { postComment } from '../../model/services/postComment'
 
 interface ArticleCommentsProps {
     className?: string
@@ -29,7 +29,6 @@ const ArticleComments = (props: ArticleCommentsProps) => {
         className,
         articleId
     } = props
-    const { t } = useTranslation('article')
     const dispatch = useAppDispatch()
     const comments = useAppSelector(commentsSelectors.selectAll)
     const isCommentsLoading = useAppSelector(selectCommentsIsLoading)
@@ -56,7 +55,6 @@ const ArticleComments = (props: ArticleCommentsProps) => {
     return (
         <div className={cn(cls.ArticleComments, {}, [className])}>
             {articleId && <AddCommentForm saveComment={saveCommentHandler}/>}
-            <Text className={cls.CommentsTitle} title={`${t('article.Comments')} (${comments?.length ?? 0})`} />
             <CommentsList comments={comments} isLoading={isCommentsLoading} />
         </div>
     )
