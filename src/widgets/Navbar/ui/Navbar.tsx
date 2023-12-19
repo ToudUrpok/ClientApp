@@ -6,6 +6,10 @@ import { Button, ButtonTheme } from '../../../shared/ui/Button/Button'
 import { LoginModal } from '../../../features/AuthByUsername'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks/redux'
 import { selectUserAuthData, userActions } from '../../../entities/User'
+import {
+    useNavigate,
+    useLocation
+} from 'react-router-dom'
 
 interface NavbarProps {
     className?: string
@@ -16,6 +20,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const [isLoginModal, setIsLoginModal] = useState(false)
     const authData = useAppSelector(selectUserAuthData)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const showLoginModal = useCallback(() => {
         setIsLoginModal(true)
@@ -23,7 +29,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     const closeLoginModal = useCallback(() => {
         setIsLoginModal(false)
-    }, [])
+        const origin = location.state?.from?.pathname
+        if (origin) {
+            navigate(origin)
+        }
+    }, [location.state?.from?.pathname, navigate])
 
     const logOut = useCallback(() => {
         setIsLoginModal(false)

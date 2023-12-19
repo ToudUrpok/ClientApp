@@ -44,7 +44,14 @@ module.exports = {
             'no-underscore-dangle': 'off',
             'no-underscore-dangle': 'off' */
         '@typescript-eslint/indent': [2, 4],
-        indent: [2, 4],
+        indent: [
+            'error',
+            4,
+            {
+              SwitchCase: 1,
+              ignoredNodes: ['ConditionalExpression'],
+            }
+        ],
         'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/explicit-function-return-type': 'warn',
         '@typescript-eslint/prefer-nullish-coalescing': 'warn',

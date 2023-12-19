@@ -10,7 +10,9 @@ body {
 
 .app {
     min-height: 100vh;
+    width: 100vw;
     background: var(--bg-color);
+    position: fixed;
 }
 
 .content-page {
@@ -20,4 +22,8 @@ body {
 .page-wrapper {
     flex-grow: 1;
     padding: 15px;
+    padding-bottom: 40px;
+    width: calc(100% - var(--sidebar-width));
+    height: calc(100vh - var(--navbar-height));
+    overflow: auto;
 }

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --env port=3000",
+    "start:dev": "concurrently \"npm run start:dev:server\" \"npm start\"",
     "start:dev:server": "node ./json-server/index.js",
     "build:prod": "npx webpack --env mode=production",
     "build:dev": "npx webpack --env mode=development",
@@ -111,10 +112,6 @@
         "height": 768,
         "deviceScaleFactor": 1,
         "mobile": false
-      },
-      "chrome.iphone7": {
-        "target": "chrome.docker",
-        "preset": "iPhone 7"
       }
     }
   },
