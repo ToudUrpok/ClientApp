@@ -4,5 +4,4 @@ export interface IComment {
     id: string
     user: IUser
     text: string
-    articleId: string
 }
