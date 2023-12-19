@@ -1,11 +1,11 @@
-import { IComment } from '../../model/types/comment'
+import { Text } from '../../../../shared/ui/Text/Text'
+import { Loader } from '../../../../shared/ui/Loader/Loader'
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './CommentsList.module.scss'
+import { IComment } from '../../model/types/comment'
+import { CommentCard } from '../Comment/CommentCard'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text } from '../../../../shared/ui/Text/Text'
-import { CommentCard } from '../Comment/CommentCard'
-import { Loader } from '../../../../shared/ui/Loader/Loader'
 
 interface CommentsListProps {
     className?: string
@@ -20,7 +20,7 @@ export const CommentsList = memo((props: CommentsListProps) => {
         isLoading
     } = props
 
-    const { t } = useTranslation('articles')
+    const { t } = useTranslation('comments')
 
     if (isLoading) {
         return (
@@ -31,13 +31,16 @@ export const CommentsList = memo((props: CommentsListProps) => {
     }
 
     return (
-        <div className={cn(cls.CommentsList, {}, [className])}>
-            {comments?.length
-                ? comments.map(c => (
-                    <CommentCard className={cls.CommentItem} key={c.id} comment={c} />
-                ))
-                : <Text text={t('articles.NoComments')} />
-            }
+        <div className={cn(cls.CommentsListWrapper, {}, [className])}>
+            <Text className={cls.Title} title={`${t('comments.Comments')} (${comments?.length ?? 0})`} />
+            <div className={cls.CommentsList}>
+                {comments?.length
+                    ? comments.map(c => (
+                        <CommentCard className={cls.CommentItem} key={c.id} comment={c} />
+                    ))
+                    : <Text text={t('comments.NoComments')} />
+                }
+            </div>
         </div>
     )
 })

@@ -15,7 +15,7 @@ export const AddCommentForm = memo((props: AddCommentFormProps) => {
         className,
         saveComment
     } = props
-    const { t } = useTranslation('article')
+    const { t } = useTranslation('comments')
     const [text, setText] = useState('')
     const [addBtnDisabled, setAddBtnDisabled] = useState(true)
 
@@ -42,7 +42,7 @@ export const AddCommentForm = memo((props: AddCommentFormProps) => {
         <div className={cn(cls.AddCommentForm, {}, [className])}>
             <Input
                 className={cls.CommentInput}
-                placeholder={t('article.CommentText')}
+                placeholder={t('comments.CommentText')}
                 value={text}
                 onChange={handleTextInputChange}
             />
@@ -51,7 +51,7 @@ export const AddCommentForm = memo((props: AddCommentFormProps) => {
                 onClick={addComment}
                 disabled={addBtnDisabled}
             >
-                {t('article.AddComment')}
+                {t('comments.AddComment')}
             </Button>
         </div>
     )

@@ -152,7 +152,7 @@
       ]
     }
   ],
-  "comments": [
+  "articlesComments": [
     {
       "id": "1",
       "text": "Perfecrt article about JS!",
@@ -200,6 +200,12 @@
       "userId": "1",
       "text": "Test comment",
       "id": "hNLJePH"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "Test comment 1",
+      "id": "9UyotrN"
     }
   ],
   "users": [

@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
-import { IComment } from '../../../../entities/Comment'
+import { IArticleComment } from '../types/articleComment'
 
-export const fetchCommentsByArticleId = createAsyncThunk<IComment[], string, { rejectValue: Error }>(
+export const fetchCommentsByArticleId = createAsyncThunk<IArticleComment[], string, { rejectValue: Error }>(
     'articleComments/fetchCommentsByArticleId',
     async (articleId: string, thunkAPI) => {
         try {
-            const response = await $authAPI.get<IComment[]>('/comments', {
+            const response = await $authAPI.get<IArticleComment[]>('/articlesComments', {
                 params: {
                     articleId,
                     _expand: 'user'

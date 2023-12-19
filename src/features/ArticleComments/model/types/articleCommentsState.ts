@@ -1,7 +1,7 @@
 import { EntityState } from '@reduxjs/toolkit'
-import { IComment } from '../../../../entities/Comment'
+import { IArticleComment } from './articleComment'
 
-export interface ArticleCommentsState extends EntityState<IComment> {
+export interface ArticleCommentsState extends EntityState<IArticleComment> {
     isLoading?: boolean
     error?: string
 }
