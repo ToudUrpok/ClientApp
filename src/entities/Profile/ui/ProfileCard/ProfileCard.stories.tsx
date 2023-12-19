@@ -20,15 +20,3 @@ export const Dark: Story = {
         ThemeDecorator(Theme.DARK)
     ]
 }
-
-export const Error: Story = {
-    args: {
-        error: 'Error'
-    }
-}
-
-export const Loading: Story = {
-    args: {
-        isLoading: true
-    }
-}

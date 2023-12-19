@@ -2,13 +2,14 @@ import { loginByUsername } from './loginByUsername'
 import { userActions } from '../../../../entities/User'
 import { AsyncThunkTester } from '../../../../shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
 import { $API } from '../../../../shared/api/APIInstance'
+import { UserRole } from '../../../../entities/User/model/types/user'
 
 jest.mock('shared/api/APIInstance')
 const mockedAxiosPost = jest.mocked($API.post)
 
 describe('loginByUsername', () => {
     test('successful login', async () => {
-        const userData = { id: '1', username: 'Eugene' }
+        const userData = { id: '1', username: 'Eugene', role: UserRole.USER }
         mockedAxiosPost.mockReturnValue(Promise.resolve({ data: userData }))
 
         const thunkTester = new AsyncThunkTester()

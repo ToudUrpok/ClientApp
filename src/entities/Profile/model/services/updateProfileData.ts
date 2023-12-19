@@ -6,13 +6,15 @@ export const updateProfileData = createAsyncThunk<IProfile, IProfile, { rejectVa
     'profile/updateProfileData',
     async (profile: IProfile, thunkAPI) => {
         try {
-            const response = await $authAPI.put<IProfile>('/profile', profile)
+            console.log(profile)
+            const response = await $authAPI.put<IProfile>(`/profiles/${profile.id}`, profile)
             if (!response.data) {
                 throw new Error()
             }
 
             return response.data
         } catch (err) {
+            console.log(err)
             return thunkAPI.rejectWithValue(err as Error)
         }
     }

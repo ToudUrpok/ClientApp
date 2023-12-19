@@ -11,7 +11,7 @@ const mockedAxiosGet = jest.mocked($authAPI.get)
 const mockedAxiosPut = jest.mocked($authAPI.put)
 
 const testProfileData: IProfile = {
-    user_id: '7',
+    id: '7',
     firstname: 'John',
     lastname: 'Smith',
     age: 20,
@@ -26,7 +26,7 @@ describe('fetchProfileData', () => {
         mockedAxiosGet.mockReturnValue(Promise.resolve({ data: testProfileData }))
 
         const thunkTester = new AsyncThunkTester()
-        const result = await thunkTester.callThunk(fetchProfileData(testProfileData.user_id))
+        const result = await thunkTester.callThunk(fetchProfileData(testProfileData.id))
 
         expect(mockedAxiosGet).toBeCalled()
         expect(result.meta.requestStatus).toEqual('fulfilled')
@@ -37,7 +37,7 @@ describe('fetchProfileData', () => {
         mockedAxiosGet.mockReturnValue(Promise.resolve({ status: 403 }))
 
         const thunkTester = new AsyncThunkTester()
-        const result = await thunkTester.callThunk(fetchProfileData(testProfileData.user_id))
+        const result = await thunkTester.callThunk(fetchProfileData(testProfileData.id))
 
         expect(mockedAxiosGet).toBeCalled()
         expect(result.meta.requestStatus).toEqual('rejected')
