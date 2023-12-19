@@ -2,5 +2,7 @@
   "article.ArticleDetailedPage": "Детализированная страница статьи",
   "article.ArticleNotFound": "Статья не найдена...",
   "article.ArticleDataLoadingError": "Не получилось загрузить статью",
-  "article.Comments": "Комментарии"
+  "article.Comments": "Комментарии",
+  "article.AddComment": "Добавить комментарий",
+  "article.CommentText": "текст комментария"
 }

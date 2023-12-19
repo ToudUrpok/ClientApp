@@ -2,5 +2,7 @@
   "article.ArticleDetailedPage": "Article Detailed Page",
   "article.ArticleNotFound": "Article Not Found...",
   "article.ArticleDataLoadingError": "Failed To Load the Article ",
-  "article.Comments": "Comments"
+  "article.Comments": "Comments",
+  "article.AddComment": "Add Comment",
+  "article.CommentText": "comment text"
 }

@@ -3,5 +3,5 @@ export type {
 } from './model/types/articleCommentsState'
 
 export {
-    ArticleComments
-} from './ui/ArticleComments/ArticleComments'
+    ArticleCommentsLazy as ArticleComments
+} from './ui/ArticleComments/ArticleComments.lazy'
