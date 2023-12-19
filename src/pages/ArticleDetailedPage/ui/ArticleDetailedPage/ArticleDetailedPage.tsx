@@ -4,6 +4,7 @@ import cls from './ArticleDetailedPage.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Article } from '../../../../entities/Article'
 import { useParams } from 'react-router-dom'
+import { ArticleComments } from 'features/ArticleComments'
 
 interface ArticleDetailedPageProps {
     className?: string
@@ -27,6 +28,7 @@ const ArticleDetailedPage = (props: ArticleDetailedPageProps) => {
     return (
         <div className={cn(cls.ArticleDetailedPage, {}, [className])}>
             <Article id={id} />
+            <ArticleComments articleId={id} />
         </div>
     )
 }

@@ -6,10 +6,9 @@ import { Input } from '../../../../shared/ui/Input/Input'
 import { IProfile } from '../../model/types/profile'
 import { Loader } from '../../../../shared/ui/Loader/Loader'
 import { Avatar } from '../../../../shared/ui/Avatar/Avatar'
-import { useMemo } from 'react'
 import { CurrencySelect } from '../../../../entities/Currency'
 import { CountrySelect } from '../../../../entities/Country'
-import { generateAvatarAlt } from '../../model/helpers/avatarHelper'
+import { generateAvatarAlt } from '../../../../shared/lib/helpers/avatarHelper'
 
 interface ProfileCardProps {
     className?: string
@@ -27,10 +26,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
     } = props
 
     const { t } = useTranslation('profile')
-
-    const altValue = useMemo((): string => {
-        return generateAvatarAlt(profileData?.firstname, profileData?.lastname)
-    }, [profileData?.firstname, profileData?.lastname])
 
     if (isLoading) {
         return (
@@ -57,7 +52,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <div className={cls.data} >
                 <Avatar
                     src={profileData?.avatar}
-                    alt={altValue}
+                    alt={generateAvatarAlt(profileData?.firstname, profileData?.lastname)}
                     size={150}
                 />
                 <Input

@@ -10,7 +10,7 @@ import { Country, CountrySelect } from '../../../../entities/Country'
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { Button, ButtonTheme } from '../../../../shared/ui/Button/Button'
 import { Text, TextTheme } from '../../../../shared/ui/Text/Text'
-import { generateAvatarAlt } from '../../model/helpers/avatarHelper'
+import { generateAvatarAlt } from '../../../../shared/lib/helpers/avatarHelper'
 
 interface IProfileForm {
     firstname?: string
