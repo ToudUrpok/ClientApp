@@ -15,7 +15,7 @@ import { updateProfileData } from '../services/updateProfileData'
 
 describe('Test profileSlice', () => {
     const testProfileData: IProfile = {
-        user_id: '7',
+        id: '7',
         firstname: 'John',
         lastname: 'Smith',
         age: 20,

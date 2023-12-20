@@ -5,14 +5,22 @@ import ProfilePage from './ProfilePage'
 import { LocalStoreDecorator } from '../../../shared/config/storybook/StoreDecorator/LocalStoreDecorator'
 import { Country } from '../../../entities/Country'
 import { Currency } from '../../../entities/Currency'
+import { UserRole } from '../../../entities/User'
 
 const meta: Meta<typeof ProfilePage> = {
     component: ProfilePage,
     decorators: [
         LocalStoreDecorator({
+            user: {
+                authData: {
+                    id: '7',
+                    username: 'Eugene',
+                    role: UserRole.USER
+                }
+            },
             profile: {
                 profileData: {
-                    user_id: '7',
+                    id: '7',
                     firstname: 'string',
                     lastname: 'string',
                     age: 10,
@@ -37,5 +45,41 @@ export const Dark: Story = {
     args: {},
     decorators: [
         ThemeDecorator(Theme.DARK)
+    ]
+}
+
+export const Loading: Story = {
+    args: {},
+    decorators: [
+        LocalStoreDecorator({
+            user: {
+                authData: {
+                    id: '7',
+                    username: 'Eugene',
+                    role: UserRole.USER
+                }
+            },
+            profile: {
+                isLoading: true
+            }
+        })
+    ]
+}
+
+export const Error: Story = {
+    args: {},
+    decorators: [
+        LocalStoreDecorator({
+            user: {
+                authData: {
+                    id: '7',
+                    username: 'Eugene',
+                    role: UserRole.USER
+                }
+            },
+            profile: {
+                error: 'Error'
+            }
+        })
     ]
 }

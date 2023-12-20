@@ -1,21 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '../../../../app/providers/ThemeProvider'
-import { ProfileCard } from './ProfileCard'
+import { AddCommentForm } from './AddCommentForm'
 
-const meta: Meta<typeof ProfileCard> = {
-    component: ProfileCard
+const meta: Meta<typeof AddCommentForm> = {
+    component: AddCommentForm
 }
 
 export default meta
-type Story = StoryObj<typeof ProfileCard>
+type Story = StoryObj<typeof AddCommentForm>
 
 export const Light: Story = {
-    args: {}
 }
 
 export const Dark: Story = {
-    args: {},
     decorators: [
         ThemeDecorator(Theme.DARK)
     ]

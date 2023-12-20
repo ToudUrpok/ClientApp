@@ -48,64 +48,6 @@ server.use((req, res, next) => {
     next();
 });
 
-server.get('/profiles/:id', (req, res) => {
-    try {
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-        const { profiles = [] } = db;
-
-        const profileFromBd = profiles.find(
-            (profile) => profile.user_id === req.params.id,
-        );
-
-        if (profileFromBd) {
-            return res.json(profileFromBd);
-        }
-
-        return res.status(403).json({ message: 'Profile not found' });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json({ message: e.message });
-    }
-});
-
-server.put('/profile', (req, res) => {
-    try {
-        const profile = req.body;
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-        let { profiles = [] } = db;
-
-        const profileIndex = profiles.findIndex(
-            (p) => p.user_id === profile.user_id,
-        );
-
-        profiles.splice(profileIndex, 1, profile)
-        db.profiles = profiles;
-
-        fs.writeFileSync(path.resolve(__dirname, 'db.json'), JSON.stringify(db, null, 4), 'UTF-8')
-
-
-        const u_profiles = getProfiles();
-        const profileFromBd = u_profiles.find(
-            (p) => p.user_id === profile.user_id,
-        );
-
-        if (profileFromBd) {
-            return res.json(profileFromBd);
-        }
-
-        return res.status(403).json({ message: 'Profile not found' });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json({ message: e.message });
-    }
-});
-
-function getProfiles() {
-    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-    const { profiles = [] } = db;
-    return profiles;
-}
-
 server.use(router);
 
 // запуск сервера
