@@ -61,8 +61,8 @@ export const Input = memo((props: InputProps) => {
                     onClick={handlePassVisibilityChange}
                 >
                     {btnType === PASSWORD_INPUT_TYPE
-                        ? <EyeOpenedIcon />
-                        : <EyeClosedIcon />
+                        ? <EyeOpenedIcon className={cls.PasswordIcon} />
+                        : <EyeClosedIcon className={cls.PasswordIcon} />
                     }
                 </Button>
             }
