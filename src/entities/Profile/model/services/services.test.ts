@@ -5,6 +5,7 @@ import { Country } from '../../../../entities/Country'
 import { Currency } from '../../../../entities/Currency'
 import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
 import { updateProfileData } from './updateProfileData'
+import { IUser, UserRole } from '../../../../entities/User'
 
 jest.mock('shared/api/authorizedAPIInstance')
 const mockedAxiosGet = jest.mocked($authAPI.get)
@@ -21,6 +22,24 @@ const testProfileData: IProfile = {
     avatar: 'https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg'
 }
 
+const testUser: IUser = {
+    id: '7',
+    username: 'Test',
+    role: UserRole.USER
+}
+
+const testUserNoProfileUpdatePermission: IUser = {
+    id: '1',
+    username: 'NotPermitted',
+    role: UserRole.USER
+}
+
+const testAdmin: IUser = {
+    id: '5',
+    username: 'Admin',
+    role: UserRole.ADMIN
+}
+
 describe('fetchProfileData', () => {
     test('successful fetch', async () => {
         mockedAxiosGet.mockReturnValue(Promise.resolve({ data: testProfileData }))
@@ -28,7 +47,7 @@ describe('fetchProfileData', () => {
         const thunkTester = new AsyncThunkTester()
         const result = await thunkTester.callThunk(fetchProfileData(testProfileData.id))
 
-        expect(mockedAxiosGet).toBeCalled()
+        expect(mockedAxiosGet).toHaveBeenCalled()
         expect(result.meta.requestStatus).toEqual('fulfilled')
         expect(result.payload).toEqual(testProfileData)
     })
@@ -39,31 +58,70 @@ describe('fetchProfileData', () => {
         const thunkTester = new AsyncThunkTester()
         const result = await thunkTester.callThunk(fetchProfileData(testProfileData.id))
 
-        expect(mockedAxiosGet).toBeCalled()
+        expect(mockedAxiosGet).toHaveBeenCalled()
         expect(result.meta.requestStatus).toEqual('rejected')
         expect(result.payload).toBeInstanceOf(Error)
     })
 })
 
 describe('updateProfileData', () => {
-    test('successful update', async () => {
+    test('successful self update', async () => {
         mockedAxiosPut.mockReturnValue(Promise.resolve({ data: testProfileData }))
 
-        const thunkTester = new AsyncThunkTester()
+        const thunkTester = new AsyncThunkTester({
+            user: {
+                authData: testUser
+            }
+        })
         const result = await thunkTester.callThunk(updateProfileData(testProfileData))
 
-        expect(mockedAxiosPut).toBeCalled()
+        expect(mockedAxiosPut).toHaveBeenCalled()
         expect(result.meta.requestStatus).toEqual('fulfilled')
         expect(result.payload).toEqual(testProfileData)
     })
 
-    test('failed update', async () => {
-        mockedAxiosPut.mockReturnValue(Promise.resolve({ status: 403 }))
+    test('successful admin update', async () => {
+        mockedAxiosPut.mockReturnValue(Promise.resolve({ data: testProfileData }))
 
-        const thunkTester = new AsyncThunkTester()
+        const thunkTester = new AsyncThunkTester({
+            user: {
+                authData: testAdmin
+            }
+        })
         const result = await thunkTester.callThunk(updateProfileData(testProfileData))
 
-        expect(mockedAxiosPut).toBeCalled()
+        expect(mockedAxiosPut).toHaveBeenCalled()
+        expect(result.meta.requestStatus).toEqual('fulfilled')
+        expect(result.payload).toEqual(testProfileData)
+    })
+
+    test('failed update not permitted', async () => {
+        mockedAxiosPut.mockReturnValue(Promise.resolve({ data: testProfileData }))
+
+        const thunkTester = new AsyncThunkTester({
+            user: {
+                authData: testUserNoProfileUpdatePermission
+            }
+        })
+        const result = await thunkTester.callThunk(updateProfileData(testProfileData))
+
+        expect(mockedAxiosPut).not.toHaveBeenCalled()
+        expect(result.meta.requestStatus).toEqual('rejected')
+        expect(result.payload).toBeInstanceOf(Error)
+        expect((result.payload as Error).message).toEqual('Unable to edit requested Profile.')
+    })
+
+    test('failed update request', async () => {
+        mockedAxiosPut.mockReturnValue(Promise.resolve({ status: 403 }))
+
+        const thunkTester = new AsyncThunkTester({
+            user: {
+                authData: testUser
+            }
+        })
+        const result = await thunkTester.callThunk(updateProfileData(testProfileData))
+
+        expect(mockedAxiosPut).toHaveBeenCalled()
         expect(result.meta.requestStatus).toEqual('rejected')
         expect(result.payload).toBeInstanceOf(Error)
     })

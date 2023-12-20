@@ -9,17 +9,30 @@ import { memo } from 'react'
 interface CommentCardProps {
     className?: string
     comment: IComment
+    isAuthorViewable?: boolean
+    viewAuthorProfile?: (profileId: string) => void
 }
 
 export const CommentCard = memo((props: CommentCardProps) => {
     const {
         className,
-        comment
+        comment,
+        isAuthorViewable = false,
+        viewAuthorProfile
     } = props
+
+    const handleCardHeaderClick = () => {
+        if (isAuthorViewable) {
+            viewAuthorProfile?.(comment.user.id)
+        }
+    }
 
     return (
         <div className={cn(cls.CommentCard, {}, [className])}>
-            <div className={cls.Header}>
+            <div
+                className={cls.Header}
+                onClick={handleCardHeaderClick}
+            >
                 <Avatar
                     className={cls.HeaderAvatar}
                     src={comment.user.avatar}

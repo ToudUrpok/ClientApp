@@ -1,6 +1,6 @@
 import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
-import { selectUserAuthData } from '../../../../entities/User'
+import { selectUserAuthData, UserRole } from '../../../../entities/User'
 import {
     IProfile,
     ProfileCard,
@@ -12,10 +12,9 @@ import {
     selectProfileIsLoading,
     updateProfileData
 } from '../../../../entities/Profile'
-import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './EditableProfileView.module.scss'
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { Button } from '../../../../shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { Skeleton } from '../../../../shared/ui/Skeleton/Skeleton'
@@ -45,12 +44,17 @@ export const EditableProfileView = memo((props: EditableProfileViewProps) => {
     const error = useAppSelector(selectProfileError)
     const profileData = useAppSelector(selectProfileData)
     const authData = useAppSelector(selectUserAuthData)
-    const canEdit = authData?.id === profileId // || authData?.role === UserRole.ADMIN
-    const [editMode, setEditMode] = useState<boolean>(canEdit && editModeRequested)
 
-    useInitialEffect(() => {
-        dispatch(fetchProfileData(profileId))
-    })
+    useEffect(() => {
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData(profileId))
+        }
+    }, [dispatch, profileId])
+
+    const canEdit = useMemo(() => {
+        return (authData?.id === profileId) || (authData?.role === UserRole.ADMIN)
+    }, [authData?.id, profileId, authData?.role])
+    const [editMode, setEditMode] = useState<boolean>(canEdit && editModeRequested)
 
     const onUpdateProfileData = useCallback(async (editedProfile: IProfile) => {
         if (__PROJECT__ !== 'storybook') {

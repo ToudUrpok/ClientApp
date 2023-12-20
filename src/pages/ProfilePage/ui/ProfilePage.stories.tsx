@@ -5,7 +5,7 @@ import ProfilePage from './ProfilePage'
 import { LocalStoreDecorator } from '../../../shared/config/storybook/StoreDecorator/LocalStoreDecorator'
 import { Country } from '../../../entities/Country'
 import { Currency } from '../../../entities/Currency'
-import { UserRole } from '../../../entities/User/model/types/user'
+import { UserRole } from '../../../entities/User'
 
 const meta: Meta<typeof ProfilePage> = {
     component: ProfilePage,
