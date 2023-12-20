@@ -42,7 +42,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         control,
         handleSubmit,
         watch,
-        formState: { errors }
+        formState: { errors, isDirty }
     } = useForm<IProfileForm>({
         defaultValues: {
             firstname: profileData.firstname,
@@ -190,6 +190,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                         className={cls.Btn}
                         theme={ButtonTheme.OUTLINED}
                         type='submit'
+                        disabled={!isDirty}
                     >
                         {t('profile.Save')}
                     </Button>

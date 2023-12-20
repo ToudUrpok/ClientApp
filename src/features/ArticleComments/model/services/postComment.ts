@@ -14,7 +14,7 @@ export const postComment = createAsyncThunk<IArticleComment, CommentArgs, { reje
     async (commentArgs: CommentArgs, thunkAPI) => {
         try {
             const user = selectUserAuthData(thunkAPI.getState())
-            if (!user || !commentArgs.articleId || !commentArgs.text?.length) {
+            if (!user?.id?.length || !commentArgs.articleId?.length || !commentArgs.text?.length) {
                 return thunkAPI.rejectWithValue(new Error('Invalid comment data.'))
             }
 

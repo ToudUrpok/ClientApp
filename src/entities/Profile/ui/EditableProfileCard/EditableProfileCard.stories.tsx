@@ -9,7 +9,7 @@ const meta: Meta<typeof EditableProfileCard> = {
     component: EditableProfileCard,
     args: {
         profileData: {
-            user_id: '7',
+            id: '7',
             firstname: 'string',
             lastname: 'string',
             age: 10,

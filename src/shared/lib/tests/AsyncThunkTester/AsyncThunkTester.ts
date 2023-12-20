@@ -1,13 +1,13 @@
-import { AsyncThunkAction } from '@reduxjs/toolkit'
+import { AsyncThunkAction, DeepPartial } from '@reduxjs/toolkit'
 import { AppDispatch, StateSchema } from '../../../../app/store/StateSchema'
 
 export class AsyncThunkTester<Returned, ThunkArg, RejectedValue> {
     dispatch: AppDispatch
     getState: () => StateSchema
 
-    constructor () {
+    constructor (state?: DeepPartial<StateSchema>) {
         this.dispatch = jest.fn()
-        this.getState = jest.fn()
+        this.getState = jest.fn(() => state as StateSchema)
     }
 
     async callThunk (action: AsyncThunkAction<Returned, ThunkArg, { rejectValue: RejectedValue }>) {
