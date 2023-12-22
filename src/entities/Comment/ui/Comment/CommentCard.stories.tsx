@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '../../../../app/providers/ThemeProvider'
 import { CommentCard } from './CommentCard'
-import { UserRole } from '../../../../entities/User'
 
 const meta: Meta<typeof CommentCard> = {
     component: CommentCard,
@@ -13,7 +12,7 @@ const meta: Meta<typeof CommentCard> = {
             user: {
                 id: '1',
                 username: 'Test User 1',
-                role: UserRole.ADMIN,
+                role: 'admin',
                 avatar: 'https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg'
             }
         }
@@ -40,7 +39,7 @@ export const WithoutAvatarImg: Story = {
             user: {
                 id: '1',
                 username: 'Test User 1',
-                role: UserRole.ADMIN
+                role: 'admin'
             }
         }
     }

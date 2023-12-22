@@ -3,7 +3,8 @@ export {
 } from './ui/Article/Article'
 
 export type {
-    IArticle
+    IArticle,
+    TArticleTopic
 } from './model/types/article'
 
 export type {
@@ -18,3 +19,11 @@ export {
     selectArticleError,
     selectArticleState
 } from './model/slice/articleSlice'
+
+export type {
+    TArticlesCollectionView
+} from './ui/ArticlesCollection/ArticlesCollection'
+
+export {
+    ArticlesCollection
+} from './ui/ArticlesCollection/ArticlesCollection'

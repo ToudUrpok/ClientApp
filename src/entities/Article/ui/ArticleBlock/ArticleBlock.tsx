@@ -3,7 +3,6 @@ import { CodeContent } from '../ArticleBlockContents/CodeContent/CodeContent'
 import { ImageContent } from '../ArticleBlockContents/ImageContent/ImageContent'
 import {
     IArticleBlock,
-    ArticleBlockType,
     ITextContent,
     ICodeContent,
     IImageContent
@@ -14,11 +13,11 @@ import { memo } from 'react'
 
 const renderContent = (block: IArticleBlock) => {
     switch (block.type) {
-        case ArticleBlockType.TEXT:
+        case 'TEXT':
             return <TextContent content={block.content as ITextContent} />
-        case ArticleBlockType.CODE:
+        case 'CODE':
             return <CodeContent content={block.content as ICodeContent} />
-        case ArticleBlockType.IMAGE:
+        case 'IMAGE':
             return <ImageContent content={block.content as IImageContent} />
         default:
             return null

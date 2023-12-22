@@ -8,6 +8,14 @@
     }
 }
 
+.disabled {
+    opacity: 0.5;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
 .plain {
     padding: 0;
     border: none;
@@ -66,8 +74,4 @@
 
 .size_xl {
     font: var(--font-xl);
-}
-
-.disabled {
-    opacity: 0.5;
 }

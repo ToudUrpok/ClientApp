@@ -1,3 +1,5 @@
+import { IUser } from '../../../../entities/User'
+
 export interface IArticle {
     id: string
     title: string
@@ -5,30 +7,20 @@ export interface IArticle {
     img: string
     views: number
     createdAt: string
-    type: ArticleType[]
+    user: IUser
+    topic: TArticleTopic[]
     blocks: IArticleBlock[]
 }
 
-export enum ArticleType {
-    IT = 'IT',
-    FOOD = 'Food',
-    ECONOMICS = 'Economics',
-    SCIENCE = 'Science',
-    EDUCATION = 'Education',
-    SHOPPING = 'Shopping'
-}
+export type TArticleTopic = 'IT' | 'Food' | 'Economics' | 'Science' | 'Education' | 'Shopping'
 
 export interface IArticleBlock {
     id: string
-    type: ArticleBlockType
+    type: TArticleBlockType
     content: ArticleBlockContent
 }
 
-export enum ArticleBlockType {
-    TEXT = 'TEXT',
-    CODE = 'CODE',
-    IMAGE = 'IMAGE'
-}
+export type TArticleBlockType = 'TEXT' | 'CODE' | 'IMAGE'
 
 export type ArticleBlockContent = ITextContent | ICodeContent | IImageContent
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Article } from './Article'
 import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '../../../../app/providers/ThemeProvider'
-import { ArticleBlockType, ArticleType, IArticle } from '../../model/types/article'
+import { IArticle } from '../../model/types/article'
 import { LocalStoreDecorator } from '../../../../shared/config/storybook/StoreDecorator/LocalStoreDecorator'
 
 const article: IArticle = {
@@ -12,11 +12,16 @@ const article: IArticle = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
-    type: [ArticleType.IT, ArticleType.EDUCATION],
+    user: {
+        id: '1',
+        username: 'Eugene Yakubovich',
+        role: 'user'
+    },
+    topic: ['IT', 'Education'],
     blocks: [
         {
             id: '1',
-            type: ArticleBlockType.TEXT,
+            type: 'TEXT',
             content: {
                 title: 'Заголовок этого блока',
                 paragraphs: [
@@ -28,14 +33,14 @@ const article: IArticle = {
         },
         {
             id: '4',
-            type: ArticleBlockType.CODE,
+            type: 'CODE',
             content: {
                 code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;'
             }
         },
         {
             id: '5',
-            type: ArticleBlockType.TEXT,
+            type: 'TEXT',
             content: {
                 title: 'Заголовок этого блока',
                 paragraphs: [
@@ -46,7 +51,7 @@ const article: IArticle = {
         },
         {
             id: '2',
-            type: ArticleBlockType.IMAGE,
+            type: 'IMAGE',
             content: {
                 src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
                 title: 'Рисунок 1 - скриншот сайта'
@@ -54,14 +59,14 @@ const article: IArticle = {
         },
         {
             id: '3',
-            type: ArticleBlockType.CODE,
+            type: 'CODE',
             content: {
                 code: "const path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);"
             }
         },
         {
             id: '7',
-            type: ArticleBlockType.TEXT,
+            type: 'TEXT',
             content: {
                 title: 'Заголовок этого блока',
                 paragraphs: [
@@ -72,7 +77,7 @@ const article: IArticle = {
         },
         {
             id: '8',
-            type: ArticleBlockType.IMAGE,
+            type: 'IMAGE',
             content: {
                 src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
                 title: 'Рисунок 1 - скриншот сайта'
@@ -80,7 +85,7 @@ const article: IArticle = {
         },
         {
             id: '9',
-            type: ArticleBlockType.TEXT,
+            type: 'TEXT',
             content: {
                 title: 'Заголовок этого блока',
                 paragraphs: [

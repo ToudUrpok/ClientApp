@@ -1,14 +1,10 @@
-import { memo, useState } from 'react'
-import { cn } from '../../../../shared/lib/classNames/classNames'
-import cls from './ArticlesRepositoryPage.module.scss'
-import { useTranslation } from 'react-i18next'
-import { ArticlesCollection, IArticle, TArticlesCollectionView } from '../../../../entities/Article'
+import type { Meta, StoryObj } from '@storybook/react'
+import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '../../../../app/providers/ThemeProvider'
+import { IArticle } from '../../model/types/article'
+import { ArticlesCollection } from './ArticlesCollection'
 
-interface ArticlesRepositoryPageProps {
-    className?: string
-}
-
-const mockedArticles: IArticle[] = [
+const articles: IArticle[] = [
     {
         id: '1',
         title: 'Javascript news 2022',
@@ -110,30 +106,74 @@ const mockedArticles: IArticle[] = [
     }
 ]
 
-const ArticlesRepositoryPage = (props: ArticlesRepositoryPageProps) => {
-    const {
-        className
-    } = props
-    const { t } = useTranslation('articles')
-    const [view/* , setView */] = useState<TArticlesCollectionView>()
+const meta: Meta<typeof ArticlesCollection> = {
+    component: ArticlesCollection,
+    args: {
+        articles: new Array(16)
+            .fill(0)
+            .map((item, index) => ({
+                ...articles[index % articles.length],
+                id: String(index + 1)
+            }))
+    }
 
-    return (
-        <div className={cn(cls.ArticlesRepositoryPage, {}, [className])}>
-            { t('articles.ArticlesRepositoryPage') }
-            <ArticlesCollection
-                className={cls.Collection}
-                articles={
-                    new Array(16)
-                        .fill(0)
-                        .map((item, index) => ({
-                            ...mockedArticles[index % mockedArticles.length],
-                            id: String(index + 1)
-                        }))
-                }
-                view={view}
-            />
-        </div>
-    )
 }
 
-export default memo(ArticlesRepositoryPage)
+export default meta
+type Story = StoryObj<typeof ArticlesCollection>
+
+export const ListView: Story = {
+}
+
+export const ListViewDark: Story = {
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+}
+
+export const ListViewLoading: Story = {
+    args: {
+        isLoading: true
+    }
+}
+
+export const ListViewLoadingDark: Story = {
+    args: {
+        isLoading: true
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+}
+
+export const GridView: Story = {
+    args: {
+        view: 'grid'
+    }
+}
+
+export const GridViewDark: Story = {
+    args: {
+        view: 'grid'
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+}
+
+export const GridViewLoading: Story = {
+    args: {
+        view: 'grid',
+        isLoading: true
+    }
+}
+
+export const GridViewLoadingDark: Story = {
+    args: {
+        view: 'grid',
+        isLoading: true
+    },
+    decorators: [
+        ThemeDecorator(Theme.DARK)
+    ]
+}

@@ -5,7 +5,6 @@ import ProfilePage from './ProfilePage'
 import { LocalStoreDecorator } from '../../../shared/config/storybook/StoreDecorator/LocalStoreDecorator'
 import { Country } from '../../../entities/Country'
 import { Currency } from '../../../entities/Currency'
-import { UserRole } from '../../../entities/User'
 
 const meta: Meta<typeof ProfilePage> = {
     component: ProfilePage,
@@ -15,7 +14,7 @@ const meta: Meta<typeof ProfilePage> = {
                 authData: {
                     id: '7',
                     username: 'Eugene',
-                    role: UserRole.USER
+                    role: 'user'
                 }
             },
             profile: {
@@ -56,7 +55,7 @@ export const Loading: Story = {
                 authData: {
                     id: '7',
                     username: 'Eugene',
-                    role: UserRole.USER
+                    role: 'user'
                 }
             },
             profile: {
@@ -74,7 +73,7 @@ export const Error: Story = {
                 authData: {
                     id: '7',
                     username: 'Eugene',
-                    role: UserRole.USER
+                    role: 'user'
                 }
             },
             profile: {

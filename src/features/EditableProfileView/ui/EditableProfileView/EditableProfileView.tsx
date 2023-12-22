@@ -1,6 +1,6 @@
 import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
-import { selectUserAuthData, UserRole } from '../../../../entities/User'
+import { selectUserAuthData } from '../../../../entities/User'
 import {
     IProfile,
     ProfileCard,
@@ -52,7 +52,7 @@ export const EditableProfileView = memo((props: EditableProfileViewProps) => {
     }, [dispatch, profileId])
 
     const canEdit = useMemo(() => {
-        return (authData?.id === profileId) || (authData?.role === UserRole.ADMIN)
+        return (authData?.id === profileId) || (authData?.role === 'admin')
     }, [authData?.id, profileId, authData?.role])
     const [editMode, setEditMode] = useState<boolean>(canEdit && editModeRequested)
 
