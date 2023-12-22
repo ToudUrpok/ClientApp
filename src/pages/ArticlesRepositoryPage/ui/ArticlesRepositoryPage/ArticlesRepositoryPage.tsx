@@ -1,7 +1,7 @@
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback } from 'react'
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './ArticlesRepositoryPage.module.scss'
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
 import { ArticlesCollection, ArticlesCollectionViewSelector, TArticlesCollectionView } from '../../../../entities/Article'
 import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
@@ -11,7 +11,7 @@ import {
     actions as articlesRepoActions,
     articlesSelectors,
     selectArticlesRepoIsLoading,
-    selectArticlesRepoError,
+    // selectArticlesRepoError,
     selectArticlesRepoView
 } from '../../model/slice/articlesRepoSlice'
 import { fetchArticles } from '../../model/services/fetchArticles'
@@ -29,10 +29,10 @@ const ArticlesRepositoryPage = (props: ArticlesRepositoryPageProps) => {
     const {
         className
     } = props
-    const { t } = useTranslation('articles')
+    // const { t } = useTranslation('articles')
     const dispatch = useAppDispatch()
     const isLaoding = useAppSelector(selectArticlesRepoIsLoading)
-    const error = useAppSelector(selectArticlesRepoError)
+    // const error = useAppSelector(selectArticlesRepoError)
     const view = useAppSelector(selectArticlesRepoView)
     const articles = useAppSelector(articlesSelectors.selectAll)
 
