@@ -12,6 +12,7 @@ import { setupStore } from './store'
 import { ProfileState } from '../../entities/Profile'
 import { ArticleState } from '../../entities/Article'
 import { ArticleCommentsState } from '../../features/ArticleComments'
+import { ArticlesRepoState } from '../../pages/ArticlesRepositoryPage'
 
 export type AppStore = ReturnType<typeof setupStore>
 export type AppDispatch = AppStore['dispatch']
@@ -23,6 +24,7 @@ export interface StateSchema {
     profile?: ProfileState
     article?: ArticleState
     articleComments?: ArticleCommentsState
+    articlesRepo?: ArticlesRepoState
 }
 
 export type StateSchemaKey = keyof StateSchema

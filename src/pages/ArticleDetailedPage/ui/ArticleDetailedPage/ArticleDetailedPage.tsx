@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import { cn } from '../../../../shared/lib/classNames/classNames'
 import cls from './ArticleDetailedPage.module.scss'
 import { useTranslation } from 'react-i18next'

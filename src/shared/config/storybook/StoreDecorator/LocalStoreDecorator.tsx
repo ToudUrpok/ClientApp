@@ -6,6 +6,7 @@ import { profileReducer } from '../../../../entities/Profile'
 import { loginReducer } from '../../../../features/AuthByUsername'
 import { articleCommentsReducer } from '../../../../features/ArticleComments'
 import { ReducersList } from '../../../../shared/hooks/useDynamicReducer'
+import { articlesRepoReducer } from '../../../../pages/ArticlesRepositoryPage'
 import {
     DeepPartial,
     PreloadedState
@@ -15,7 +16,8 @@ const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
     article: articleReducer,
-    articleComments: articleCommentsReducer
+    articleComments: articleCommentsReducer,
+    articlesRepo: articlesRepoReducer
 }
 
 export const LocalStoreDecorator = (

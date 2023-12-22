@@ -56,7 +56,10 @@ export const ArticlesCollection = memo((props: ArticlesCollectionProps) => {
 
     return (
         <div className={cn(cls.ArticlesCollection, {}, [className, cls[view]])}>
-            {articles.length && items}
+            {articles.length
+                ? items
+                : null
+            }
         </div>
     )
 })

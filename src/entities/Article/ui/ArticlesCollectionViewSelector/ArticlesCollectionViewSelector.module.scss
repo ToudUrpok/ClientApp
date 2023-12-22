@@ -1,0 +1,17 @@
+.ViewSelector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px;
+    justify-content: end;
+}
+
+.Selected {
+    background-color: var(--card-bg-color);
+    fill: var(--primary-color);
+    border-radius: 4px;
+}
+
+.Unselected {
+    fill: var(--secondary-color);
+}

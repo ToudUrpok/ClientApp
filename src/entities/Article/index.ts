@@ -27,3 +27,7 @@ export type {
 export {
     ArticlesCollection
 } from './ui/ArticlesCollection/ArticlesCollection'
+
+export {
+    ArticlesCollectionViewSelector
+} from './ui/ArticlesCollectionViewSelector/ArticlesCollectionViewSelector'
