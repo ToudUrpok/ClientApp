@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ThemeDecorator } from '../../../../shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from '../../../../app/providers/ThemeProvider'
-import { IUser, UserRole } from '../../../../entities/User'
+import { IUser } from '../../../../entities/User'
 import { IProfile } from '../../../../entities/Profile'
 import { Country } from '../../../../entities/Country'
 import { Currency } from '../../../../entities/Currency'
@@ -13,14 +13,14 @@ import { Dictionary } from '@reduxjs/toolkit'
 const testUser1: IUser = {
     id: '1',
     username: 'Test User 1',
-    role: UserRole.ADMIN,
+    role: 'admin',
     avatar: 'https://i.natgeofe.com/n/2d706180-e778-4110-9c15-1a7435b72114/mountain-gorillas-rwanda-02_3x4.jpg'
 }
 
 const testUser2: IUser = {
     id: '2',
     username: 'Test User 2',
-    role: UserRole.USER
+    role: 'user'
 }
 
 const testProfile1: IProfile = {

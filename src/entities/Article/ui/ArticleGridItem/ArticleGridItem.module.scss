@@ -1,0 +1,63 @@
+.ArticleGridItem {
+    width: 230px;
+    opacity: 0.9;
+    transition: 0.2s;
+    cursor: pointer;
+
+    .ImageWrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+    
+    .Image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .Date {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+    }
+
+    &:hover {
+        opacity: 1;
+        transform: scale(1.01);
+
+        .Date {
+            display: block;
+        }
+    }
+    
+    .Info {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .Topic p {
+        width: 115px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .Views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+    
+    .Title {
+        margin-top: 8px;
+    }
+    
+    .Title p {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

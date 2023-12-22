@@ -1,11 +1,3 @@
-.AppLink {
-    margin: 0 10px;
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
 .Primary {
     color: var(--primary-color-inverted);
 }
@@ -16,4 +8,8 @@
 
 .Contrast {
     color: var(--contrast-color);
+}
+
+.Clear {
+    text-decoration: none;
 }

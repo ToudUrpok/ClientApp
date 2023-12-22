@@ -1,6 +1,6 @@
 import { AsyncThunkTester } from '../../../../shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
 import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
-import { IUser, UserRole } from '../../../../entities/User'
+import { IUser } from '../../../../entities/User'
 import { IArticleComment } from '../types/articleComment'
 import { fetchCommentsByArticleId } from './fetchCommentsByArticleId'
 import { CommentArgs, postComment } from './postComment'
@@ -12,13 +12,13 @@ const mockedAxiosPost = jest.mocked($authAPI.post)
 const testUser1: IUser = {
     id: '1',
     username: 'Test User 1',
-    role: UserRole.ADMIN
+    role: 'admin'
 }
 
 const testUser2: IUser = {
     id: '2',
     username: 'Test User 2',
-    role: UserRole.USER
+    role: 'user'
 }
 
 const testArticleId = '1'

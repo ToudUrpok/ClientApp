@@ -16,6 +16,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     return (
         <div className={cn(cls.SidebarItem, { [cls.collapsed]: collapsed })}>
             <AppLink
+                className={cls.SidebarLinkWrapper}
                 to={item.Path}
                 theme={AppLinkTheme.CONTRAST}
             >

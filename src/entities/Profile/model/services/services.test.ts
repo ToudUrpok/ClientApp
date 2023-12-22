@@ -5,7 +5,7 @@ import { Country } from '../../../../entities/Country'
 import { Currency } from '../../../../entities/Currency'
 import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
 import { updateProfileData } from './updateProfileData'
-import { IUser, UserRole } from '../../../../entities/User'
+import { IUser } from '../../../../entities/User'
 
 jest.mock('shared/api/authorizedAPIInstance')
 const mockedAxiosGet = jest.mocked($authAPI.get)
@@ -25,19 +25,19 @@ const testProfileData: IProfile = {
 const testUser: IUser = {
     id: '7',
     username: 'Test',
-    role: UserRole.USER
+    role: 'user'
 }
 
 const testUserNoProfileUpdatePermission: IUser = {
     id: '1',
     username: 'NotPermitted',
-    role: UserRole.USER
+    role: 'user'
 }
 
 const testAdmin: IUser = {
     id: '5',
     username: 'Admin',
-    role: UserRole.ADMIN
+    role: 'admin'
 }
 
 describe('fetchProfileData', () => {

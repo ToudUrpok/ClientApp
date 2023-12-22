@@ -1,0 +1,43 @@
+.Header {
+    display: flex;
+    align-items: center;
+}
+
+.AuthorName {
+    margin-left: 8px;
+}
+
+.CreationDate {
+    margin-left: auto;
+}
+
+.Title {
+    margin-top: 8px;
+}
+
+.Image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    margin: 16px 0;
+}
+
+.Footer {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.Views {
+    margin-left: auto;
+    margin-right: 8px;
+}
+
+.TextBlock {
+    max-height: 200px;
+    overflow-y: hidden;
+}
+
+.ReadLink {
+    margin-left: 16px;
+}
