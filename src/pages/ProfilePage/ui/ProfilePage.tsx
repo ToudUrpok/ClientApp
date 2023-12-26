@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Text } from '../../../shared/ui/Text/Text'
 import { selectUserAuthData } from '../../../entities/User'
 import { EditableProfileView } from '../../../features/EditableProfileView'
-import { Page } from '../../../widgets/Page/Page'
+import Page from '../../../widgets/Page/Page'
 
 const ProfilePage = () => {
     const authData = useAppSelector(selectUserAuthData)

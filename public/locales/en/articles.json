@@ -1,4 +1,5 @@
 {
   "articles.ArticlesRepositoryPage": "Articles Repository Page",
-  "articles.Read": "Read"
+  "articles.Read": "Read",
+  "articles.ArtilcesLoadingError": "Failed to load Articles."
 }

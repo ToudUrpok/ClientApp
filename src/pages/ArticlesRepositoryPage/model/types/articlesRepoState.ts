@@ -7,5 +7,5 @@ export interface ArticlesRepoState extends EntityState<IArticle> {
     view?: TArticlesCollectionView
     page?: number
     limit?: number
-    hasMore?: boolean
+    totalCount?: number
 }

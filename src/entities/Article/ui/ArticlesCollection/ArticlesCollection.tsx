@@ -18,7 +18,7 @@ interface ArticlesCollectionProps {
 
 const getSkeleton = (view: TArticlesCollectionView) => {
     const isListView = view === 'list'
-    return new Array(isListView ? 3 : 9)
+    return new Array(isListView ? 2 : 21)
         .fill(0)
         .map((item, index) => (
             isListView
@@ -46,20 +46,13 @@ export const ArticlesCollection = memo((props: ArticlesCollectionProps) => {
         }
     }, [articles, view])
 
-    if (isLoading) {
-        return (
-            <div className={cn(cls.ArticlesCollection, {}, [className, cls[view]])}>
-                {getSkeleton(view)}
-            </div>
-        )
-    }
-
     return (
         <div className={cn(cls.ArticlesCollection, {}, [className, cls[view]])}>
             {articles.length
                 ? items
                 : null
             }
+            {isLoading && getSkeleton(view)}
         </div>
     )
 })

@@ -1,4 +1,5 @@
 {
   "articles.ArticlesRepositoryPage": "Страница Репозитория Статей",
-  "articles.Read": "Читать"
+  "articles.Read": "Читать",
+  "articles.ArtilcesLoadingError": "Не удалось загрузить статьи."
 }

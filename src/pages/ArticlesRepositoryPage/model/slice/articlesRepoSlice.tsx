@@ -1,12 +1,13 @@
 import {
     createEntityAdapter,
+    createSelector,
     createSlice,
     PayloadAction
 } from '@reduxjs/toolkit'
 import { StateSchema } from '../../../../app/store/StateSchema'
 import { IArticle, TArticlesCollectionView } from '../../../../entities/Article'
 import { ArticlesRepoState } from '../types/articlesRepoState'
-import { fetchArticles } from '../services/fetchArticles'
+import { fetchArticles, FetchArticlesPayload } from '../services/fetchArticles'
 import { ARTICLES_COLLECTION_VIEW } from '../../../../shared/const/localStorage'
 
 const initialState: ArticlesRepoState = {
@@ -15,7 +16,7 @@ const initialState: ArticlesRepoState = {
     view: 'list',
     page: 1,
     limit: 21,
-    hasMore: true,
+    totalCount: undefined,
     ids: [],
     entities: {}
 }
@@ -47,9 +48,10 @@ const articlesRepoSlice = createSlice({
             state.error = undefined
             state.isLoading = true
         })
-        builder.addCase(fetchArticles.fulfilled, (state, action: PayloadAction<IArticle[]>) => {
+        builder.addCase(fetchArticles.fulfilled, (state, action: PayloadAction<FetchArticlesPayload>) => {
             state.isLoading = false
-            articlesAdapter.setAll(state, action.payload)
+            articlesAdapter.addMany(state, action.payload.articles)
+            state.totalCount = action.payload.total
         })
         builder.addCase(fetchArticles.rejected, (state, action) => {
             state.isLoading = false
@@ -64,8 +66,11 @@ export const articlesSelectors = articlesAdapter.getSelectors<StateSchema>(
 export const selectArticlesRepoIsLoading = (state: StateSchema): boolean => state?.articlesRepo?.isLoading ?? false
 export const selectArticlesRepoError = (state: StateSchema): string | undefined => state?.articlesRepo?.error
 export const selectArticlesRepoView = (state: StateSchema): TArticlesCollectionView | undefined => state?.articlesRepo?.view
-export const selectArticlesRepoPage = (state: StateSchema): number | undefined => state?.articlesRepo?.page
+export const selectArticlesRepoPage = (state: StateSchema): number => state?.articlesRepo?.page ?? 1
 export const selectArticlesRepoLimit = (state: StateSchema): number | undefined => state?.articlesRepo?.limit
-export const selectArticlesRepoHasMore = (state: StateSchema): boolean | undefined => state?.articlesRepo?.hasMore
+export const selectArticlesRepoTotalCount = (state: StateSchema): number | undefined => state?.articlesRepo?.totalCount
+export const selectArticlesRepoHasMore = createSelector([articlesSelectors.selectTotal, selectArticlesRepoTotalCount], (count, total) => {
+    return total ? count < total : true
+})
 
 export const { reducer, actions } = articlesRepoSlice
