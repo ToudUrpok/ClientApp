@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ArticleComments } from '../../../../features/ArticleComments'
 import { Button } from '../../../../shared/ui/Button/Button'
 import { RoutePaths } from '../../../../shared/config/routeConfig/routeConfig'
+import { Page } from '../../../../widgets/Page/Page'
 
 interface ArticleDetailedPageProps {
     className?: string
@@ -33,7 +34,7 @@ const ArticleDetailedPage = (props: ArticleDetailedPageProps) => {
     }
 
     return (
-        <div className={cn(cls.ArticleDetailedPage, {}, [className])}>
+        <Page className={cn(cls.ArticleDetailedPage, {}, [className])}>
             <Button
                 className={cls.BackBtn}
                 onClick={navigateBack}
@@ -42,7 +43,7 @@ const ArticleDetailedPage = (props: ArticleDetailedPageProps) => {
             </Button>
             <Article id={id} />
             <ArticleComments articleId={id} />
-        </div>
+        </Page>
     )
 }
 

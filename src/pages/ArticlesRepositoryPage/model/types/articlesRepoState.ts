@@ -5,4 +5,7 @@ export interface ArticlesRepoState extends EntityState<IArticle> {
     isLoading?: boolean
     error?: string
     view?: TArticlesCollectionView
+    page?: number
+    limit?: number
+    hasMore?: boolean
 }

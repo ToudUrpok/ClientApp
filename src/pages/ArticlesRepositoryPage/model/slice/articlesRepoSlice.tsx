@@ -12,7 +12,10 @@ import { ARTICLES_COLLECTION_VIEW } from '../../../../shared/const/localStorage'
 const initialState: ArticlesRepoState = {
     isLoading: false,
     error: undefined,
-    view: undefined,
+    view: 'list',
+    page: 1,
+    limit: 21,
+    hasMore: true,
     ids: [],
     entities: {}
 }
@@ -29,9 +32,11 @@ const articlesRepoSlice = createSlice({
             state.view = action.payload
             localStorage.setItem(ARTICLES_COLLECTION_VIEW, action.payload)
         },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload
+        },
         applyPreferences: (state) => {
             const viewItem = localStorage.getItem(ARTICLES_COLLECTION_VIEW)
-            console.log(viewItem)
             if (viewItem) {
                 state.view = viewItem as TArticlesCollectionView
             }
@@ -59,5 +64,8 @@ export const articlesSelectors = articlesAdapter.getSelectors<StateSchema>(
 export const selectArticlesRepoIsLoading = (state: StateSchema): boolean => state?.articlesRepo?.isLoading ?? false
 export const selectArticlesRepoError = (state: StateSchema): string | undefined => state?.articlesRepo?.error
 export const selectArticlesRepoView = (state: StateSchema): TArticlesCollectionView | undefined => state?.articlesRepo?.view
+export const selectArticlesRepoPage = (state: StateSchema): number | undefined => state?.articlesRepo?.page
+export const selectArticlesRepoLimit = (state: StateSchema): number | undefined => state?.articlesRepo?.limit
+export const selectArticlesRepoHasMore = (state: StateSchema): boolean | undefined => state?.articlesRepo?.hasMore
 
 export const { reducer, actions } = articlesRepoSlice

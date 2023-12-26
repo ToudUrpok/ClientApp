@@ -14,7 +14,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation()
 
     return (
-        <div className={cn(cls.SidebarItem, { [cls.collapsed]: collapsed })}>
+        <nav className={cn(cls.SidebarItem, { [cls.collapsed]: collapsed })}>
             <AppLink
                 className={cls.SidebarLinkWrapper}
                 to={item.Path}
@@ -25,6 +25,6 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
                     {t(item.LabelKey)}
                 </span>
             </AppLink>
-        </div>
+        </nav>
     )
 })

@@ -6,17 +6,11 @@ import { RequireAuth } from './RequireAuth'
 
 const AppRouter = () => {
     const renderRoute = useCallback((routeProps: AppRouteProps) => {
-        const elem = (
-            <div className="page-wrapper">
-                {routeProps.element}
-            </div>
-        )
-
         return (
             <Route
                 key={routeProps.path}
                 path={routeProps.path}
-                element= { routeProps.authOnly ? <RequireAuth>{elem}</RequireAuth> : elem }
+                element= { routeProps.authOnly ? <RequireAuth>{routeProps.element}</RequireAuth> : routeProps.element }
             />
         )
     }, [])

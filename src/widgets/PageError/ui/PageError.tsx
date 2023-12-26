@@ -15,13 +15,13 @@ export const PageError = ({ className }: PageErrorProps) => {
     }
 
     return (
-        <div className={cn(cls.PageError, {}, [className])}>
+        <section className={cn(cls.PageError, {}, [className])}>
             <p>
                 {t('UnexpectedError')}
             </p>
             <Button onClick={reloadPage}>
                 {t('ReloadPage')}
             </Button>
-        </div>
+        </section>
     )
 }

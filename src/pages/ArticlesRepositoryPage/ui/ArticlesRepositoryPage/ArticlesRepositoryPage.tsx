@@ -15,6 +15,7 @@ import {
     selectArticlesRepoView
 } from '../../model/slice/articlesRepoSlice'
 import { fetchArticles } from '../../model/services/fetchArticles'
+import { Page } from '../../../../widgets/Page/Page'
 
 interface ArticlesRepositoryPageProps {
     className?: string
@@ -46,7 +47,7 @@ const ArticlesRepositoryPage = (props: ArticlesRepositoryPageProps) => {
     }, [dispatch])
 
     return (
-        <div className={cn(cls.ArticlesRepositoryPage, {}, [className])}>
+        <Page className={cn(cls.ArticlesRepositoryPage, {}, [className])}>
             <ArticlesCollectionViewSelector
                 className={cls.ViewSelector}
                 currentView={view ?? 'list'}
@@ -58,7 +59,7 @@ const ArticlesRepositoryPage = (props: ArticlesRepositoryPageProps) => {
                 articles={articles}
                 view={view}
             />
-        </div>
+        </Page>
     )
 }
 
