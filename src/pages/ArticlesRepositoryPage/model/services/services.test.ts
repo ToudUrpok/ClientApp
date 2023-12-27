@@ -1,0 +1,195 @@
+import { Dictionary } from '@reduxjs/toolkit'
+import { AsyncThunkTester } from '../../../../shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
+import { fetchNextArticlesPage } from './fetchNextArticlesPage'
+import { IArticle } from '../../../../entities/Article'
+
+jest.mock('./fetchArticles')
+
+const articles: Dictionary<IArticle> = {
+    1: {
+        id: '1',
+        title: 'Javascript news 2022',
+        subtitle: 'Что нового в JS за 2022 год?',
+        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        views: 1022,
+        createdAt: '26.02.2022',
+        user: {
+            id: '1',
+            username: 'Eugene Yakubovich',
+            role: 'user'
+        },
+        topic: [
+            'IT'
+        ],
+        blocks: [
+            {
+                id: '1',
+                type: 'TEXT',
+                content: {
+                    title: 'Заголовок этого блока',
+                    paragraphs: [
+                        'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.'
+                    ]
+                }
+            }
+        ]
+    },
+    2: {
+        id: '2',
+        title: 'Javascript news 2022',
+        subtitle: 'Что нового в JS за 2022 год?',
+        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        views: 1022,
+        createdAt: '26.02.2022',
+        user: {
+            id: '1',
+            username: 'Eugene Yakubovich',
+            role: 'user'
+        },
+        topic: [
+            'IT'
+        ],
+        blocks: [
+            {
+                id: '1',
+                type: 'TEXT',
+                content: {
+                    title: 'Заголовок этого блока',
+                    paragraphs: [
+                        'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.'
+                    ]
+                }
+            }
+        ]
+    },
+    3: {
+        id: '3',
+        title: 'Javascript news 2022',
+        subtitle: 'Что нового в JS за 2022 год?',
+        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        views: 1022,
+        createdAt: '26.02.2022',
+        user: {
+            id: '1',
+            username: 'Eugene Yakubovich',
+            role: 'user'
+        },
+        topic: [
+            'IT'
+        ],
+        blocks: [
+            {
+                id: '1',
+                type: 'TEXT',
+                content: {
+                    title: 'Заголовок этого блока',
+                    paragraphs: [
+                        'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.'
+                    ]
+                }
+            }
+        ]
+    },
+    4: {
+        id: '4',
+        title: 'Javascript news 2022',
+        subtitle: 'Что нового в JS за 2022 год?',
+        img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        views: 1022,
+        createdAt: '26.02.2022',
+        user: {
+            id: '1',
+            username: 'Eugene Yakubovich',
+            role: 'user'
+        },
+        topic: [
+            'IT'
+        ],
+        blocks: [
+            {
+                id: '1',
+                type: 'TEXT',
+                content: {
+                    title: 'Заголовок этого блока',
+                    paragraphs: [
+                        'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.'
+                    ]
+                }
+            }
+        ]
+    }
+}
+
+describe('fetchNextArticlePage', () => {
+    test('first fetch', async () => {
+        const thunkTester = new AsyncThunkTester({
+            articlesRepo: {
+                isLoading: false,
+                error: undefined,
+                view: 'grid',
+                page: 1,
+                limit: 2,
+                totalCount: undefined,
+                ids: [],
+                entities: {}
+            }
+        })
+        const result = await thunkTester.callThunk(fetchNextArticlesPage())
+        expect(result.payload).toEqual(true)
+        expect(thunkTester.dispatch).toHaveBeenCalledTimes(4)
+    })
+
+    test('second successful fetch', async () => {
+        const thunkTester = new AsyncThunkTester({
+            articlesRepo: {
+                isLoading: false,
+                error: undefined,
+                view: 'grid',
+                page: 2,
+                limit: 2,
+                totalCount: 10,
+                ids: ['1', '2', '3', '4'],
+                entities: articles
+            }
+        })
+        const result = await thunkTester.callThunk(fetchNextArticlesPage())
+        expect(result.payload).toEqual(true)
+        expect(thunkTester.dispatch).toHaveBeenCalledTimes(4)
+    })
+
+    test('second fetch failed no more articles', async () => {
+        const thunkTester = new AsyncThunkTester({
+            articlesRepo: {
+                isLoading: false,
+                error: undefined,
+                view: 'grid',
+                page: 2,
+                limit: 2,
+                totalCount: 4,
+                ids: ['1', '2', '3', '4'],
+                entities: articles
+            }
+        })
+        const result = await thunkTester.callThunk(fetchNextArticlesPage())
+        expect(result.payload).toEqual(false)
+        expect(thunkTester.dispatch).toHaveBeenCalledTimes(2)
+    })
+
+    test('second fetch failed isLoading', async () => {
+        const thunkTester = new AsyncThunkTester({
+            articlesRepo: {
+                isLoading: true,
+                error: undefined,
+                view: 'grid',
+                page: 2,
+                limit: 2,
+                totalCount: 10,
+                ids: ['1', '2', '3', '4'],
+                entities: articles
+            }
+        })
+        const result = await thunkTester.callThunk(fetchNextArticlesPage())
+        expect(result.payload).toEqual(false)
+        expect(thunkTester.dispatch).toHaveBeenCalledTimes(2)
+    })
+})
