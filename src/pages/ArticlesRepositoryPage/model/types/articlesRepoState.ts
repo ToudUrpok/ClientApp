@@ -8,4 +8,5 @@ export interface ArticlesRepoState extends EntityState<IArticle> {
     page?: number
     limit?: number
     totalCount?: number
+    _inited: boolean
 }

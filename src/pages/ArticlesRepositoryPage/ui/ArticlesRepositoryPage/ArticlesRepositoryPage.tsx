@@ -1,10 +1,17 @@
 import { memo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { cn } from '../../../../shared/lib/classNames/classNames'
-import cls from './ArticlesRepositoryPage.module.scss'
-import { ArticlesCollection, ArticlesCollectionViewSelector, TArticlesCollectionView } from '../../../../entities/Article'
 import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
+import { Text, TextTheme } from '../../../../shared/ui/Text/Text'
+import Page from '../../../../widgets/Page/Page'
+import {
+    ArticlesCollection,
+    ArticlesCollectionViewSelector,
+    TArticlesCollectionView
+} from '../../../../entities/Article'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks/redux'
+import cls from './ArticlesRepositoryPage.module.scss'
 import {
     reducer as articlesRepoReducer,
     actions as articlesRepoActions,
@@ -13,11 +20,8 @@ import {
     selectArticlesRepoError,
     selectArticlesRepoView
 } from '../../model/slice/articlesRepoSlice'
-import { fetchArticles } from '../../model/services/fetchArticles'
-import Page from '../../../../widgets/Page/Page'
+import { initArticlesRepo } from '../../model/services/initArticlesRepo'
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage'
-import { Text, TextTheme } from '../../../../shared/ui/Text/Text'
-import { useTranslation } from 'react-i18next'
 
 interface ArticlesRepositoryPageProps {
     className?: string
@@ -40,8 +44,7 @@ const ArticlesRepositoryPage = (props: ArticlesRepositoryPageProps) => {
     const articles = useAppSelector(articlesSelectors.selectAll)
 
     useInitialEffect(() => {
-        dispatch(articlesRepoActions.applyPreferences())
-        dispatch(fetchArticles({}))
+        dispatch(initArticlesRepo())
     })
 
     const switchView = useCallback((view: TArticlesCollectionView) => {

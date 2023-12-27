@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { IArticle } from '../../../../entities/Article'
 import {
     selectArticlesRepoHasMore,
     selectArticlesRepoIsLoading,
@@ -8,15 +7,6 @@ import {
 } from '../slice/articlesRepoSlice'
 import { AppDispatch, StateSchema } from '../../../../app/store/StateSchema'
 import { fetchArticles } from './fetchArticles'
-
-export interface FetchArticlesArgs {
-    filters?: string
-}
-
-export interface FetchArticlesPayload {
-    articles: IArticle[]
-    total: number
-}
 
 export const fetchNextArticlesPage = createAsyncThunk<
 boolean,

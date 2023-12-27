@@ -1,9 +1,22 @@
 import { Dictionary } from '@reduxjs/toolkit'
 import { AsyncThunkTester } from '../../../../shared/lib/tests/AsyncThunkTester/AsyncThunkTester'
-import { fetchNextArticlesPage } from './fetchNextArticlesPage'
 import { IArticle } from '../../../../entities/Article'
+import { fetchNextArticlesPage } from './fetchNextArticlesPage'
+import { ArticlesRepoState } from '../types/articlesRepoState'
 
 jest.mock('./fetchArticles')
+
+const initedArticlesRepoState: ArticlesRepoState = {
+    isLoading: false,
+    error: undefined,
+    view: 'grid',
+    page: 1,
+    limit: 2,
+    totalCount: undefined,
+    ids: [],
+    entities: {},
+    _inited: true
+}
 
 const articles: Dictionary<IArticle> = {
     1: {
@@ -123,16 +136,7 @@ const articles: Dictionary<IArticle> = {
 describe('fetchNextArticlePage', () => {
     test('first fetch', async () => {
         const thunkTester = new AsyncThunkTester({
-            articlesRepo: {
-                isLoading: false,
-                error: undefined,
-                view: 'grid',
-                page: 1,
-                limit: 2,
-                totalCount: undefined,
-                ids: [],
-                entities: {}
-            }
+            articlesRepo: initedArticlesRepoState
         })
         const result = await thunkTester.callThunk(fetchNextArticlesPage())
         expect(result.payload).toEqual(true)
@@ -142,11 +146,8 @@ describe('fetchNextArticlePage', () => {
     test('second successful fetch', async () => {
         const thunkTester = new AsyncThunkTester({
             articlesRepo: {
-                isLoading: false,
-                error: undefined,
-                view: 'grid',
+                ...initedArticlesRepoState,
                 page: 2,
-                limit: 2,
                 totalCount: 10,
                 ids: ['1', '2', '3', '4'],
                 entities: articles
@@ -160,11 +161,8 @@ describe('fetchNextArticlePage', () => {
     test('second fetch failed no more articles', async () => {
         const thunkTester = new AsyncThunkTester({
             articlesRepo: {
-                isLoading: false,
-                error: undefined,
-                view: 'grid',
+                ...initedArticlesRepoState,
                 page: 2,
-                limit: 2,
                 totalCount: 4,
                 ids: ['1', '2', '3', '4'],
                 entities: articles
@@ -178,14 +176,8 @@ describe('fetchNextArticlePage', () => {
     test('second fetch failed isLoading', async () => {
         const thunkTester = new AsyncThunkTester({
             articlesRepo: {
-                isLoading: true,
-                error: undefined,
-                view: 'grid',
-                page: 2,
-                limit: 2,
-                totalCount: 10,
-                ids: ['1', '2', '3', '4'],
-                entities: articles
+                ...initedArticlesRepoState,
+                isLoading: true
             }
         })
         const result = await thunkTester.callThunk(fetchNextArticlesPage())

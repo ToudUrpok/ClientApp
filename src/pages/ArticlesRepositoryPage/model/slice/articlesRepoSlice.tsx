@@ -4,11 +4,11 @@ import {
     createSlice,
     PayloadAction
 } from '@reduxjs/toolkit'
-import { StateSchema } from '../../../../app/store/StateSchema'
+import { ARTICLES_COLLECTION_VIEW } from '../../../../shared/const/localStorage'
 import { IArticle, TArticlesCollectionView } from '../../../../entities/Article'
+import { StateSchema } from '../../../../app/store/StateSchema'
 import { ArticlesRepoState } from '../types/articlesRepoState'
 import { fetchArticles, FetchArticlesPayload } from '../services/fetchArticles'
-import { ARTICLES_COLLECTION_VIEW } from '../../../../shared/const/localStorage'
 
 const initialState: ArticlesRepoState = {
     isLoading: false,
@@ -18,7 +18,8 @@ const initialState: ArticlesRepoState = {
     limit: 21,
     totalCount: undefined,
     ids: [],
-    entities: {}
+    entities: {},
+    _inited: false
 }
 
 const articlesAdapter = createEntityAdapter({
@@ -36,11 +37,12 @@ const articlesRepoSlice = createSlice({
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload
         },
-        applyPreferences: (state) => {
+        initState: (state) => {
             const viewItem = localStorage.getItem(ARTICLES_COLLECTION_VIEW)
             if (viewItem) {
                 state.view = viewItem as TArticlesCollectionView
             }
+            state._inited = true
         }
     },
     extraReducers: (builder) => {
@@ -69,6 +71,7 @@ export const selectArticlesRepoView = (state: StateSchema): TArticlesCollectionV
 export const selectArticlesRepoPage = (state: StateSchema): number => state?.articlesRepo?.page ?? 1
 export const selectArticlesRepoLimit = (state: StateSchema): number | undefined => state?.articlesRepo?.limit
 export const selectArticlesRepoTotalCount = (state: StateSchema): number | undefined => state?.articlesRepo?.totalCount
+export const selectArticlesRepoInited = (state: StateSchema): boolean => state?.articlesRepo?._inited ?? false
 export const selectArticlesRepoHasMore = createSelector([articlesSelectors.selectTotal, selectArticlesRepoTotalCount], (count, total) => {
     return total ? count < total : true
 })
