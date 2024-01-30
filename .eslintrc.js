@@ -70,6 +70,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',  //Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error',  //Checks effect dependencies
         '@typescript-eslint/no-dynamic-delete': 'warn',
-        '@typescript-eslint/unbound-method': 'off'
+        '@typescript-eslint/unbound-method': 'off',
+        'n/no-callback-literal': 'off'
     }
 }

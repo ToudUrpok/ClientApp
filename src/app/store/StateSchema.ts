@@ -13,6 +13,7 @@ import { ProfileState } from '../../entities/Profile'
 import { ArticleState } from '../../entities/Article'
 import { ArticleCommentsState } from '../../features/ArticleComments'
 import { ArticlesRepoState } from '../../pages/ArticlesRepositoryPage'
+import { PageState } from '../../widgets/Page'
 
 export type AppStore = ReturnType<typeof setupStore>
 export type AppDispatch = AppStore['dispatch']
@@ -20,6 +21,7 @@ export type AppDispatch = AppStore['dispatch']
 export interface StateSchema {
     counter: CounterState
     user: UserState
+    pages: PageState
     login?: LoginState
     profile?: ProfileState
     article?: ArticleState

@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ArticleComments } from '../../../../features/ArticleComments'
 import { Button } from '../../../../shared/ui/Button/Button'
 import { RoutePaths } from '../../../../shared/config/routeConfig/routeConfig'
-import Page from '../../../../widgets/Page/Page'
+import { Page } from '../../../../widgets/Page'
 
 interface ArticleDetailedPageProps {
     className?: string

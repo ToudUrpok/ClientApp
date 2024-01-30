@@ -8,12 +8,14 @@ import { counterReducer } from '../../entities/Counter'
 import { userReducer } from '../../entities/User'
 import { createReducerManager } from './reducerManager'
 import { StateSchema } from './StateSchema'
+import { pagesReducer } from '../../widgets/Page'
 
 export function setupStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const staticReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         counter: counterReducer,
-        user: userReducer
+        user: userReducer,
+        pages: pagesReducer
     }
 
     const reducerManager = createReducerManager(staticReducers)

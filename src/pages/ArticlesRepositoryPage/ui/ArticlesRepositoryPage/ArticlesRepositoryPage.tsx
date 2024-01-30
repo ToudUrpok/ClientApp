@@ -4,7 +4,7 @@ import { cn } from '../../../../shared/lib/classNames/classNames'
 import { ReducersList, useDynamicReducer } from '../../../../shared/hooks/useDynamicReducer'
 import { useInitialEffect } from '../../../../shared/hooks/useInitialEffect'
 import { Text, TextTheme } from '../../../../shared/ui/Text/Text'
-import Page from '../../../../widgets/Page/Page'
+import { Page } from '../../../../widgets/Page'
 import {
     ArticlesCollection,
     ArticlesCollectionViewSelector,
@@ -73,6 +73,7 @@ const ArticlesRepositoryPage = (props: ArticlesRepositoryPageProps) => {
         <Page
             className={cn(cls.ArticlesRepositoryPage, {}, [className])}
             onScrollEnd={loadNextPage}
+            restoreScrollPosition
         >
             <ArticlesCollectionViewSelector
                 className={cls.ViewSelector}
