@@ -2,13 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { $authAPI } from '../../../../shared/api/authorizedAPIInstance'
 import { IArticle } from '../../../../entities/Article'
 import {
+    selectArticlesRepoFilters,
     selectArticlesRepoLimit,
     selectArticlesRepoPage
 } from '../slice/articlesRepoSlice'
 import { StateSchema } from '../../../../app/store/StateSchema'
 
 export interface FetchArticlesArgs {
-    filters?: string
+    refresh?: boolean
 }
 
 export interface FetchArticlesPayload {
@@ -21,13 +22,18 @@ export const fetchArticles = createAsyncThunk<FetchArticlesPayload, FetchArticle
     async (args: FetchArticlesArgs, thunkAPI) => {
         const page = selectArticlesRepoPage(thunkAPI.getState())
         const limit = selectArticlesRepoLimit(thunkAPI.getState())
+        const filters = selectArticlesRepoFilters(thunkAPI.getState())
 
         try {
             const response = await $authAPI.get<IArticle[]>('/articles', {
                 params: {
                     _expand: 'user',
                     _page: page,
-                    _limit: limit
+                    _limit: limit,
+                    _sort: filters?.sortField,
+                    _order: filters?.sortOrder ? 'asc' : 'desc',
+                    q: filters?.searchValue,
+                    topic: filters?.topic === 'All' ? undefined : filters?.topic
                 }
             })
 

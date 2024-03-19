@@ -1,5 +1,21 @@
 {
   "articles.ArticlesRepositoryPage": "Articles Repository Page",
   "articles.Read": "Read",
-  "articles.ArtilcesLoadingError": "Failed to load Articles."
+  "articles.ArtilcesLoadingError": "Failed to load Articles.",
+  "CreateDate": "creation date",
+  "Views": "views",
+  "Author": "author",
+  "IT": "IT",
+  "Food": "Food",
+  "Economics": "Economics",
+  "Science": "Science",
+  "Education": "Education",
+  "Shopping": "Shopping",
+  "All": "All",
+  "Sport": "Sport",
+  "Politics": "Politics",
+  "History": "History",
+  "Media": "Media",
+  "Finance": "Finance",
+  "NoArticles": "No Articles Found"
 }

@@ -1,5 +1,21 @@
 {
   "articles.ArticlesRepositoryPage": "Страница Репозитория Статей",
   "articles.Read": "Читать",
-  "articles.ArtilcesLoadingError": "Не удалось загрузить статьи."
+  "articles.ArtilcesLoadingError": "Не удалось загрузить статьи.",
+  "CreateDate": "дате создания",
+  "Views": "просмотрам",
+  "Author": "автору",
+  "IT": "ИТ",
+  "Food": "Еда",
+  "Economics": "Экономика",
+  "Science": "Наука",
+  "Education": "Образование",
+  "Shopping": "Шоппинг",
+  "All": "Все",
+  "Sport": "Спорт",
+  "Politics": "Политика",
+  "History": "История",
+  "Media": "Медиа",
+  "Finance": "Финансы",
+  "NoArticles": "Статьи не найдены"
 }

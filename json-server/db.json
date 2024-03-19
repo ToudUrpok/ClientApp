@@ -9,7 +9,6 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
         "Education"
       ],
       "blocks": [
@@ -94,12 +93,11 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/v2/resize:fit:1400/1*m0H6-tUbW6grMlezlb52yw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
-      "userId": "1",
+      "views": 10,
+      "createdAt": "20.01.2022",
+      "userId": "2",
       "topic": [
-        "IT",
-        "Education"
+        "IT"
       ],
       "blocks": [
         {
@@ -120,12 +118,11 @@
       "title": "Kotlin news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 102,
+      "createdAt": "26.02.2021",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "IT"
       ],
       "blocks": [
         {
@@ -146,12 +143,11 @@
       "title": "Кофе",
       "subtitle": "Как выбрать вкусный сорт кофе?",
       "img": "https://thumbs.dreamstime.com/b/coffee-beans-world-drink-map-73670855.jpg",
-      "views": 1017,
+      "views": 10017,
       "createdAt": "27.11.2023",
       "userId": "2",
       "topic": [
-        "Food",
-        "Shopping"
+        "Food"
       ],
       "blocks": [
         {
@@ -210,11 +206,10 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 1027,
+      "createdAt": "21.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
         "Education"
       ],
       "blocks": [
@@ -235,12 +230,11 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/v2/resize:fit:1400/1*m0H6-tUbW6grMlezlb52yw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 1015,
+      "createdAt": "17.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "IT"
       ],
       "blocks": [
         {
@@ -260,12 +254,11 @@
       "title": "Kotlin news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
+      "views": 1511,
       "createdAt": "26.02.2022",
-      "userId": "1",
+      "userId": "2",
       "topic": [
-        "IT",
-        "Education"
+        "IT"
       ],
       "blocks": [
         {
@@ -289,7 +282,6 @@
       "createdAt": "27.11.2023",
       "userId": "2",
       "topic": [
-        "Food",
         "Shopping"
       ],
       "blocks": [
@@ -316,7 +308,6 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
         "Education"
       ],
       "blocks": [
@@ -341,8 +332,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "History"
       ],
       "blocks": [
         {
@@ -366,8 +356,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Media"
       ],
       "blocks": [
         {
@@ -391,8 +380,7 @@
       "createdAt": "27.11.2023",
       "userId": "2",
       "topic": [
-        "Food",
-        "Shopping"
+        "Sport"
       ],
       "blocks": [
         {
@@ -418,8 +406,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Economics"
       ],
       "blocks": [
         {
@@ -443,8 +430,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Science"
       ],
       "blocks": [
         {
@@ -468,8 +454,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Politics"
       ],
       "blocks": [
         {
@@ -493,8 +478,7 @@
       "createdAt": "27.11.2023",
       "userId": "2",
       "topic": [
-        "Food",
-        "Shopping"
+        "Finance"
       ],
       "blocks": [
         {
@@ -520,8 +504,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Sport"
       ],
       "blocks": [
         {
@@ -545,8 +528,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Sport"
       ],
       "blocks": [
         {
@@ -570,8 +552,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Finance"
       ],
       "blocks": [
         {
@@ -595,8 +576,7 @@
       "createdAt": "27.11.2023",
       "userId": "2",
       "topic": [
-        "Food",
-        "Shopping"
+        "Media"
       ],
       "blocks": [
         {
@@ -622,8 +602,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Media"
       ],
       "blocks": [
         {
@@ -647,8 +626,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Media"
       ],
       "blocks": [
         {
@@ -672,8 +650,7 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "topic": [
-        "IT",
-        "Education"
+        "Finance"
       ],
       "blocks": [
         {
@@ -1520,6 +1497,12 @@
       "userId": "2",
       "text": "Python!!!",
       "id": "2r5y7Q-"
+    },
+    {
+      "articleId": "4",
+      "userId": "1",
+      "text": "smth",
+      "id": "b43mK4z"
     }
   ],
   "users": [

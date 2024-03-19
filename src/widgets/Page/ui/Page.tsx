@@ -64,7 +64,7 @@ export const Page = (props: PageProps) => {
             onScroll={handleScroll}
         >
             {children}
-            <div ref={endOfPageRef}/>
+            {onScrollEnd ? <div ref={endOfPageRef}/> : null}
         </section>
     )
 }

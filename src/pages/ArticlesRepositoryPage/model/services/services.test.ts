@@ -13,6 +13,7 @@ const initedArticlesRepoState: ArticlesRepoState = {
     page: 1,
     limit: 2,
     totalCount: undefined,
+    filters: {},
     ids: [],
     entities: {},
     _inited: true

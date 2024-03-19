@@ -7,6 +7,10 @@ export type {
     TArticleTopic
 } from './model/types/article'
 
+export {
+    ArticleTopics
+} from './model/types/article'
+
 export type {
     ArticleState
 } from './model/slice/articleSlice'

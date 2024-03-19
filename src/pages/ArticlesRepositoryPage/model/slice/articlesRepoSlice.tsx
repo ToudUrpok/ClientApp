@@ -8,7 +8,8 @@ import { ARTICLES_COLLECTION_VIEW } from '../../../../shared/const/localStorage'
 import { IArticle, TArticlesCollectionView } from '../../../../entities/Article'
 import { StateSchema } from '../../../../app/store/StateSchema'
 import { ArticlesRepoState } from '../types/articlesRepoState'
-import { fetchArticles, FetchArticlesPayload } from '../services/fetchArticles'
+import { fetchArticles } from '../services/fetchArticles'
+import { IArticlesFilters } from '../types/filters'
 
 const initialState: ArticlesRepoState = {
     isLoading: false,
@@ -17,6 +18,12 @@ const initialState: ArticlesRepoState = {
     page: 1,
     limit: 21,
     totalCount: undefined,
+    filters: {
+        sortField: 'views',
+        sortOrder: false,
+        searchValue: '',
+        topic: 'All'
+    },
     ids: [],
     entities: {},
     _inited: false
@@ -37,6 +44,9 @@ const articlesRepoSlice = createSlice({
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload
         },
+        setFilters: (state, action: PayloadAction<IArticlesFilters>) => {
+            state.filters = action.payload
+        },
         initState: (state) => {
             const viewItem = localStorage.getItem(ARTICLES_COLLECTION_VIEW)
             if (viewItem) {
@@ -46,14 +56,21 @@ const articlesRepoSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchArticles.pending, (state) => {
+        builder.addCase(fetchArticles.pending, (state, action) => {
             state.error = undefined
             state.isLoading = true
+            if (action.meta.arg.refresh) {
+                articlesAdapter.removeAll(state)
+            }
         })
-        builder.addCase(fetchArticles.fulfilled, (state, action: PayloadAction<FetchArticlesPayload>) => {
+        builder.addCase(fetchArticles.fulfilled, (state, action) => {
             state.isLoading = false
-            articlesAdapter.addMany(state, action.payload.articles)
             state.totalCount = action.payload.total
+            if (action.meta.arg.refresh) {
+                articlesAdapter.setAll(state, action.payload.articles)
+            } else {
+                articlesAdapter.addMany(state, action.payload.articles)
+            }
         })
         builder.addCase(fetchArticles.rejected, (state, action) => {
             state.isLoading = false
@@ -71,9 +88,10 @@ export const selectArticlesRepoView = (state: StateSchema): TArticlesCollectionV
 export const selectArticlesRepoPage = (state: StateSchema): number => state?.articlesRepo?.page ?? 1
 export const selectArticlesRepoLimit = (state: StateSchema): number | undefined => state?.articlesRepo?.limit
 export const selectArticlesRepoTotalCount = (state: StateSchema): number | undefined => state?.articlesRepo?.totalCount
+export const selectArticlesRepoFilters = (state: StateSchema): IArticlesFilters | undefined => state?.articlesRepo?.filters
 export const selectArticlesRepoInited = (state: StateSchema): boolean => state?.articlesRepo?._inited ?? false
 export const selectArticlesRepoHasMore = createSelector([articlesSelectors.selectTotal, selectArticlesRepoTotalCount], (count, total) => {
-    return total ? count < total : true
+    return total !== undefined ? count < total : true
 })
 
 export const { reducer, actions } = articlesRepoSlice

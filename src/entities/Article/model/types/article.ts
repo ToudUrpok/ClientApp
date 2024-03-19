@@ -12,7 +12,8 @@ export interface IArticle {
     blocks: IArticleBlock[]
 }
 
-export type TArticleTopic = 'IT' | 'Food' | 'Economics' | 'Science' | 'Education' | 'Shopping'
+export const ArticleTopics = ['All', 'IT', 'Food', 'Economics', 'Science', 'Education', 'Shopping', 'Sport', 'Politics', 'History', 'Media', 'Finance'] as const
+export type TArticleTopic = typeof ArticleTopics[number]
 
 export interface IArticleBlock {
     id: string

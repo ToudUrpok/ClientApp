@@ -20,5 +20,7 @@
   "Currency": "Currency",
   "Country": "Country",
   "Articles": "Articles",
-  "Copy": "Copy"
+  "Copy": "Copy",
+  "SortBy": "Sort by",
+  "Search": "Search"
 }

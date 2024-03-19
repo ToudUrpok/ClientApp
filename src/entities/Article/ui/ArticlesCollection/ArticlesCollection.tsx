@@ -6,6 +6,8 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleGridItem } from '../ArticleGridItem/ArticleGridItem'
 import { ArticleGridItemSkeleton } from '../ArticleGridItem/ArticleGridItemSkeleton'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
+import { Text, TextTheme } from '../../../../shared/ui/Text/Text'
+import { useTranslation } from 'react-i18next'
 
 export type TArticlesCollectionView = 'list' | 'grid'
 
@@ -35,7 +37,11 @@ export const ArticlesCollection = memo((props: ArticlesCollectionProps) => {
         view = 'list'
     } = props
 
+    const { t } = useTranslation('articles')
+
     const items = useMemo(() => {
+        if (articles.length === 0) return null
+
         switch (view) {
             case 'list':
                 return articles.map(a => <ArticleListItem key={a.id} article={a} />)
@@ -48,9 +54,12 @@ export const ArticlesCollection = memo((props: ArticlesCollectionProps) => {
 
     return (
         <div className={cn(cls.ArticlesCollection, {}, [className, cls[view]])}>
-            {articles.length
-                ? items
-                : null
+            {(!isLoading && articles.length > 0) && items}
+            {(!isLoading && !articles.length) &&
+                <Text
+                    theme={TextTheme.PRIMARY}
+                    title={t('NoArticles')}
+                />
             }
             {isLoading && getSkeleton(view)}
         </div>
